@@ -11,6 +11,9 @@ export { default as ServitecSlider2 } from "./others/servitec-slider1.webp";
 export { default as ServitecSlider3 } from "./others/servitec-slider3.webp";
 export { default as ImgCongratulation } from "./others/congratulation.webp";
 
+//---------- Lavid -------------
+export { default as ImgLogoLavid } from "./others/logo-lavid.webp";
+
 // -------SVG-------
 export * from "./svg/Phone";
 export * from "./svg/Email";
