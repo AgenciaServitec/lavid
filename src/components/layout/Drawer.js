@@ -24,7 +24,7 @@ export const Drawer = ({
         <a href="#about-us">Nosotros</a>
       </MenuItem>
       <MenuItem onClick={() => onSetVisibleDrawer(false)}>
-        <a href="#services">Servicios</a>
+        <a href="#services">Productos</a>
       </MenuItem>
       <MenuItem
         onClick={() => {
