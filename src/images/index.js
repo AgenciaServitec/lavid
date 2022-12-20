@@ -10,6 +10,7 @@ export { default as ImgCarousel } from "./others/carousel-1.webp";
 export { default as ImgUnidad1 } from "./others/unidad-1.webp";
 export { default as ImgUnidad3 } from "./others/unidad-3.webp";
 export { default as ImgUnidad6 } from "./others/unidad-6.webp";
+export { default as ImgBenefitsWine } from "./others/benefits-vino.webp";
 
 // -------SVG-------
 export * from "./svg/Phone";
