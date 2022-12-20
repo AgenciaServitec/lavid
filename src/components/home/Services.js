@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { SeoFour, SeoOne, SeoThree, SeoTwo } from "../../images";
+import { ImgUnidad1, ImgUnidad3, ImgUnidad6 } from "../../images";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { Button } from "../ui";
 
@@ -8,39 +8,82 @@ export const Services = ({
   onClickVisibleFormContact,
   onEventGaClickButton,
 }) => {
+  const arraysWine = [
+    {
+      title: "1 Unidad",
+      img: ImgUnidad1,
+      oldPrice: "40.00",
+      newPrice: "39.00",
+    },
+    {
+      title: "3 Unidades",
+      img: ImgUnidad3,
+      oldPrice: "120.00",
+      newPrice: "105.00",
+    },
+    {
+      title: "6 Unidades",
+      img: ImgUnidad6,
+      oldPrice: "300.00",
+      newPrice: "270.00",
+    },
+  ];
+
   return (
     <Container id="services">
       <div className="content-items">
-        <h2 className="title">Paquetes de servicios de SEO asequibles</h2>
+        <h2 className="title">Vino 100% natural sin alcohol</h2>
         <div className="content-img">
-          <ItemService imgService={SeoOne} title="OBJETIVO" />
-          <ItemService imgService={SeoTwo} title="ESTRATEGIA" />
-          <ItemService imgService={SeoThree} title="TÉCNOLOGIA" />
-          <ItemService imgService={SeoFour} title="ANALÍTICA" />
-        </div>
-        <div className="button">
-          <Button
-            text="¡Empezar Ahora!"
-            type="tertiary"
-            onClick={() => {
-              onClickVisibleFormContact(true);
-              onEventGaClickButton(
-                "click-boton-empezar-ahora",
-                "Click boton empezar ahora"
-              );
-            }}
-          />
+          {arraysWine.map((array, index) => (
+            <ItemService
+              key={index}
+              title={array.title}
+              img={array.img}
+              oldPrice={array.oldPrice}
+              newPrice={array.newPrice}
+              onClickVisibleFormContact={onClickVisibleFormContact}
+              onEventGaClickButton={onEventGaClickButton}
+            />
+          ))}
         </div>
       </div>
     </Container>
   );
 };
 
-const ItemService = ({ imgService, title }) => {
+const ItemService = ({
+  img,
+  title,
+  oldPrice,
+  newPrice,
+  onClickVisibleFormContact,
+  onEventGaClickButton,
+}) => {
   return (
     <div className="item-img">
-      <img src={imgService} alt="seo" className="image-bg" />
-      <p>{title}</p>
+      <img src={img} alt={title} className="image-bg" />
+      <h2>{title}</h2>
+
+      <div className="text-item">
+        <span>Oferta</span>
+      </div>
+
+      <div className="price-item">
+        <span>S/.{oldPrice}</span>
+        <strong>S/.{newPrice}</strong>
+      </div>
+
+      <Button
+        text="Contactar"
+        type="tertiary"
+        onClick={() => {
+          onClickVisibleFormContact(true);
+          onEventGaClickButton(
+            "click-boton-empezar-ahora",
+            "Click boton empezar ahora"
+          );
+        }}
+      />
     </div>
   );
 };
@@ -66,15 +109,38 @@ const Container = styled.div`
     .content-img {
       display: flex;
       justify-content: space-evenly;
-      gap: 1rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
 
-      .item-img p {
-        margin-top: 0.8rem;
-        color: #000;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 1.5rem;
+      .item-img {
+        padding: 1em 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 100%;
+          max-width: 20em;
+        }
+        .text-item {
+          width: 100%;
+          border: 1px solid #000;
+          text-align: center;
+          padding: 0.3em 0;
+        }
+        .price-item {
+          padding: 1em 0;
+          display: flex;
+          align-items: center;
+          gap: 1em;
+
+          span {
+            text-decoration: line-through;
+          }
+          strong {
+            font-size: 1.2em;
+          }
+        }
       }
     }
     .button {
