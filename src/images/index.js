@@ -5,14 +5,16 @@ export { default as SeoOne } from "./others/info-box7.webp";
 export { default as SeoTwo } from "./others/info-box8.webp";
 export { default as SeoThree } from "./others/info-box9.webp";
 export { default as SeoFour } from "./others/info-box10.webp";
-export { default as ServitecSlider1 } from "./others/servitec-slider2.webp";
-export { default as ServitecSlider4 } from "./others/servitec-slider4.webp";
-export { default as ServitecSlider2 } from "./others/servitec-slider1.webp";
-export { default as ServitecSlider3 } from "./others/servitec-slider3.webp";
+export { default as ServitecSlider1 } from "./others/servitec-slider1.webp";
+
 export { default as ImgCongratulation } from "./others/congratulation.webp";
 
 //---------- Lavid -------------
 export { default as ImgLogoLavid } from "./others/logo-lavid.webp";
+export { default as ImgCarousel } from "./others/carousel-1.webp";
+export { default as ImgUnidad1 } from "./others/unidad-1.webp";
+export { default as ImgUnidad3 } from "./others/unidad-3.webp";
+export { default as ImgUnidad6 } from "./others/unidad-6.webp";
 
 // -------SVG-------
 export * from "./svg/Phone";
