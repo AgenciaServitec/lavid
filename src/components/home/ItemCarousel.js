@@ -2,22 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { Button } from "../ui";
+import { ImgCarousel } from "../../images";
 
 export const ItemCarousel = ({
-  bgColor,
-  image,
-  description,
-  title,
   onClickVisibleFormContact,
   onEventGaClickButton,
 }) => {
   return (
-    <Container bgColor={bgColor}>
+    <Container>
+      <img src={ImgCarousel} alt="Vino" />
       <div className="content-item">
         <div className="first-content">
           <div className="txt-items">
-            <h2>{title}</h2>
-            <p>{description}</p>
+            <h1>Bebe con alegre corazón</h1>
+            <h2>0% de alcohol</h2>
           </div>
           <div
             className="btn-item"
@@ -29,11 +27,8 @@ export const ItemCarousel = ({
               );
             }}
           >
-            <Button text="Cotizar" />
+            <Button text="Contactar" type="secondary" />
           </div>
-        </div>
-        <div className="second-content">
-          <img src={image} alt="Slider Servitec" />
         </div>
       </div>
     </Container>
@@ -41,11 +36,20 @@ export const ItemCarousel = ({
 };
 
 const Container = styled.div`
-  background: ${({ bgColor }) => bgColor};
-  width: 100vw;
-  height: 85vh;
+  width: 100%;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 85vh;
+    object-fit: cover;
+  }
 
   .content-item {
+    position: absolute;
+    z-index: 99999;
+    top: 0;
+    left: 5%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
@@ -76,13 +80,12 @@ const Container = styled.div`
 
     .txt-items {
       width: 100%;
-      color: #fff;
       display: flex;
       justify-content: center;
       flex-direction: column;
       align-items: start;
 
-      h2 {
+      h1 {
         font-size: 2.3rem;
         line-height: 2.2rem;
         color: #fff;
@@ -91,14 +94,11 @@ const Container = styled.div`
           line-height: 3rem;
         }
       }
-
-      p {
-        font-size: 1.3em;
-        line-height: 1.5rem;
+      h2 {
         color: #fff;
         ${mediaQuery.minTablet} {
-          font-size: 1.7rem;
-          line-height: 2rem;
+          font-size: 3.5rem;
+          line-height: 3rem;
         }
       }
     }
