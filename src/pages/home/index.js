@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { AboutUs, Carousel, Services, ServiceSection } from "../../components";
+import { Carousel, Services, WineCharacters } from "../../components";
 import { FormContact, WrapperComponent } from "../../components/ui";
 
 export const Home = ({
@@ -17,19 +17,17 @@ export const Home = ({
           onEventGaClickButton={onEventGaClickButton}
         />
         <WrapperComponent>
-          <AboutUs
-            onClickVisibleFormContact={onClickVisibleFormContact}
-            onEventGaClickButton={onEventGaClickButton}
-          />
-          <ServiceSection
-            onClickVisibleFormContact={onClickVisibleFormContact}
-            onEventGaClickButton={onEventGaClickButton}
-            onEventGaClickVideos={onEventGaClickVideos}
-          />
+          {/*<ServiceSection*/}
+          {/*  onClickVisibleFormContact={onClickVisibleFormContact}*/}
+          {/*  onEventGaClickButton={onEventGaClickButton}*/}
+          {/*  onEventGaClickVideos={onEventGaClickVideos}*/}
+          {/*/>*/}
           <Services
             onClickVisibleFormContact={onClickVisibleFormContact}
             onEventGaClickButton={onEventGaClickButton}
           />
+
+          <WineCharacters />
         </WrapperComponent>
       </Container>
       <FormContact

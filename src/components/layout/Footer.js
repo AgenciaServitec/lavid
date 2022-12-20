@@ -21,19 +21,10 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
             <img src={LogoServitec} alt="Logo publicidad google" />
           </div>
           <div className="item-text">
-            <h1>Servitec publicidad digital en google</h1>
-            <div>
-              <span>
-                Somos una empresa que brinda servicios informáticos de forma
-                integral en la asesoría y consultoría en hardware y software,
-                tanto para usuarios domésticos, negocios y empresas
-                corporativas. Prestamos nuestros servicios en forma altamente
-                personalizada, comprendiendo que cada empresa es única, creando
-                una solución a la medida de tus necesidades. Logrando
-                identificar y entender las necesidades de nuestros clientes para
-                ofrecerle la mejor solución.
-              </span>
-            </div>
+            <h2>La Vid - Vino sin alcohol</h2>
+            {/*<div>*/}
+            {/*  <span></span>*/}
+            {/*</div>*/}
           </div>
         </div>
         <div className="items-socials">
@@ -175,8 +166,8 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
         </div>
         <div className="bottom-footer">
           <div>
-            © Copyright 2022 - Servitec publicidad digital en google / Diseñado
-            con <FontAwesomeIcon icon={faHeart} color="red" /> por{" "}
+            © Copyright 2022 - La Vid / Diseñado con{" "}
+            <FontAwesomeIcon icon={faHeart} color="red" /> por{" "}
             <a
               href={contactData.poweredBy.webUrl}
               target="_blank"
@@ -217,7 +208,7 @@ const Container = styled.div`
     }
     .item-text {
       text-align: center;
-      h1 {
+      h2 {
         font-size: 2.5rem;
         font-weight: 600;
         margin: 1rem;
@@ -259,7 +250,6 @@ const Container = styled.div`
           color: #fff;
           padding: 0 1rem;
           font-size: 2.5rem;
-          padding: 0 1rem;
         }
         &:last-child {
           span {
