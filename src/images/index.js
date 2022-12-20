@@ -1,11 +1,6 @@
 // ------Img Servitec-------
 export { default as LogoServitec } from "./others/logo-servitec.webp";
 export { default as OffersServitec } from "./others/offers1.webp";
-export { default as SeoOne } from "./others/info-box7.webp";
-export { default as SeoTwo } from "./others/info-box8.webp";
-export { default as SeoThree } from "./others/info-box9.webp";
-export { default as SeoFour } from "./others/info-box10.webp";
-export { default as ServitecSlider1 } from "./others/servitec-slider1.webp";
 
 export { default as ImgCongratulation } from "./others/congratulation.webp";
 
@@ -20,3 +15,6 @@ export { default as ImgUnidad6 } from "./others/unidad-6.webp";
 export * from "./svg/Phone";
 export * from "./svg/Email";
 export * from "./svg/Location";
+export * from "./svg/Sun";
+export * from "./svg/HappyFace";
+export * from "./svg/LessSymbol";
