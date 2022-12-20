@@ -300,7 +300,7 @@ const Container = styled.div`
           color: #fff;
         }
         a:hover {
-          color: #4cc2c0;
+          color: ${({ theme }) => theme.colors.sextiary};
         }
       }
     }
@@ -315,7 +315,7 @@ const Container = styled.div`
       font-size: 0.8rem;
       a {
         font-weight: 500;
-        color: #4cc2c0;
+        color: ${({ theme }) => theme.colors.sextiary};
       }
     }
   }

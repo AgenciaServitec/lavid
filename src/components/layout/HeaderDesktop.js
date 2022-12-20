@@ -82,8 +82,8 @@ const Container = styled.section`
         cursor: pointer;
       }
       li:hover {
-        color: ${({ theme }) => theme.colors.secondary};
-        border-bottom: 2px solid ${({ theme }) => theme.colors.secondary};
+        color: ${({ theme }) => theme.colors.sextiary};
+        border-bottom: 2px solid ${({ theme }) => theme.colors.sextiary};
         transition: all 0.3s ease-in-out;
       }
     }

@@ -100,11 +100,12 @@ const Container = styled.div`
   .content-items {
     padding: 3rem 0;
     .title {
-      color: rgba(0, 0, 0, 0.54);
-      font-weight: 400;
+      color: #bf1f6a;
+      font-weight: 700;
       margin: 2rem 0;
-      font-size: 2rem;
+      font-size: 2.2rem;
       text-align: center;
+      text-decoration: underline;
     }
     .content-img {
       display: flex;
