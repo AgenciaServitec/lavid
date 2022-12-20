@@ -39,11 +39,11 @@ export const theme = {
   },
   colors: {
     primary: "#0F1920",
-    secondary: "#BF1F6A",
-    tertiary: "#8A038C",
-    quaternary: "#0D0D0D",
+    secondary: "rgb(255, 255, 255)",
+    tertiary: "rgb(255, 255, 255)",
+    quaternary: "rgb(43, 49, 57)",
     quinary: "#474D57",
-    sextiary: "#D9A23D",
+    sextiary: "#BF1F6A",
 
     font1: "rgb(5, 12, 17)",
     font2: "rgb(183, 189, 198)",
