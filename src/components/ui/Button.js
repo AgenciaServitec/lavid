@@ -11,12 +11,12 @@ const buttonsType = {
     color: "#fff",
   },
   secondary: {
-    background: "#f15b26",
+    background: "#8A038C",
     border: "transparent",
     color: "#fff",
   },
   tertiary: {
-    background: "#4cc2c0",
+    background: "#BF1F6A",
     border: "transparent",
     color: "#fff",
   },
@@ -58,7 +58,7 @@ const Container = styled.button`
   ${({ background, color, border, width }) => css`
     width: ${width};
     padding: 0.5rem 1.5rem;
-    border-radius: 7rem;
+    border-radius: 0.7em;
     border: ${border};
     background: ${background};
     color: ${color};
