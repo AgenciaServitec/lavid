@@ -168,19 +168,20 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
           <div>
             © Copyright 2022 - La Vid / Diseñado con{" "}
             <FontAwesomeIcon icon={faHeart} color="red" /> por{" "}
-            <a
-              href={contactData.poweredBy.webUrl}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() =>
-                onEventGaClickLink(
-                  "click-link-agencia-servitec",
-                  "Click link AgenciaServitec"
-                )
-              }
-            >
-              {contactData.poweredBy.name}
-            </a>
+            {contactData.poweredBy.name}
+            {/*<a*/}
+            {/*  href={contactData.poweredBy.webUrl}*/}
+            {/*  target="_blank"*/}
+            {/*  rel="noreferrer"*/}
+            {/*  onClick={() =>*/}
+            {/*    onEventGaClickLink(*/}
+            {/*      "click-link-agencia-servitec",*/}
+            {/*      "Click link AgenciaServitec"*/}
+            {/*    )*/}
+            {/*  }*/}
+            {/*>*/}
+            {/*  {contactData.poweredBy.name}*/}
+            {/*</a>*/}
           </div>
         </div>
       </>

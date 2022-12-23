@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Carousel, Services, WineCharacters } from "../../components";
 import { FormContact, WrapperComponent } from "../../components/ui";
+import { useAnalyticsEventTracker } from "../../hooks";
 
 export const Home = ({
   onClickVisibleFormContact,
@@ -9,6 +10,11 @@ export const Home = ({
   onEventGaClickButton,
   onEventGaClickVideos,
 }) => {
+  const gaEventTrackerIcons = useAnalyticsEventTracker("Icons");
+
+  const eventGaClickIcon = (action, label) =>
+    gaEventTrackerIcons(action, label);
+
   return (
     <>
       <Container>
@@ -33,6 +39,7 @@ export const Home = ({
       <FormContact
         visibleFormContact={visibleFormContact}
         onClickVisibleFormContact={onClickVisibleFormContact}
+        onEventGaClickIcon={eventGaClickIcon}
         onEventGaClickButton={onEventGaClickButton}
       />
     </>

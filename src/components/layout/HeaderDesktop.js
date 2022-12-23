@@ -36,7 +36,7 @@ export const HeaderDesktop = ({
           <a href="#services">
             <li>PRODUCTO</li>
           </a>
-          <span onClick={() => onClickVisibleFormContact()}>
+          <span onClick={() => navigate("/contact")}>
             <li>CONTÁCTO</li>
           </span>
         </ul>

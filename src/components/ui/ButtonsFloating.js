@@ -7,7 +7,7 @@ import { mediaQuery } from "../../styles/constants/mediaQuery";
 export const ButtonsFloating = ({ onEventGaClickButton }) => (
   <Container>
     <a
-      href={`https://api.whatsapp.com/send/?phone=+51941801827&text=Estoy+interesado+en+su+producto+%2F+servicio&app_absent=0`}
+      href={`https://api.whatsapp.com/send/?phone=+51939185927&text=Estoy+interesado+en+su+producto+%2F+servicio&app_absent=0`}
       target="_blank"
       rel="noreferrer"
     >
@@ -15,14 +15,14 @@ export const ButtonsFloating = ({ onEventGaClickButton }) => (
         bg="#5cc753"
         onClick={() =>
           onEventGaClickButton(
-            "click-boton-wsp-941801827",
+            "click-boton-wsp-939185927",
             "Click boton wsp 941 801 827"
           )
         }
       >
         <div className="item-text">
           <div>Atención inmediata</div>
-          <div>941 801 827</div>
+          <div>939185927</div>
         </div>
         <div className="item-icon">
           <FontAwesomeIcon icon={faWhatsapp} className="icon" />
