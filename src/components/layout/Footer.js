@@ -160,7 +160,7 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
               >
                 Chorrillos, Perú
               </a>
-              <p>Pastor Davila 117</p>
+              <p>Av.Defensores del Morro Nº479 Chorrillos Lima</p>
             </div>
           </div>
         </div>
