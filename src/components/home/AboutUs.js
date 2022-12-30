@@ -1,37 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import styled from "styled-components";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button } from "../ui";
-import { useIntersectionObserver } from "../../hooks";
+import {mediaQuery} from "../../styles/constants/mediaQuery";
+import {faCheck} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Button} from "../ui";
 
 export const AboutUs = ({
   onClickVisibleFormContact,
   onEventGaClickButton,
   onEventGaClickVideos,
 }) => {
-  const ref = useRef(null);
-  const refVideo = useRef(null);
-
-  const { show } = useIntersectionObserver({
-    element: ref?.current,
-    options: { rootMargin: "270px", threshold: 1 },
-  });
-
-  const videoUrl =
-    "https://firebasestorage.googleapis.com/v0/b/sendingemails-348505.appspot.com/o/resources%2FWhatsApp%20Video%202022-06-23%20at%208.14.59%20PM.mp4?alt=media&token=2c657a72-c58a-4f39-8dca-fc7fa840b397";
-
-  useEffect(() => {
-    if (show) {
-      refVideo.current.play();
-    } else {
-      refVideo.current.pause();
-    }
-  }, [show]);
-
   return (
-    <Container id="about-us" ref={ref}>
+    <Container id="about-us">
       <div className="content-items">
         <div className="content">
           <div className="heading">
@@ -80,19 +60,19 @@ export const AboutUs = ({
           </div>
         </div>
         <div className="content-video">
-          <video
-            ref={refVideo}
-            className="item-video"
-            allowFullScreen={true}
-            controls
-            src={videoUrl}
-            onClick={() =>
-              onEventGaClickVideos(
-                "click-video-publicidad-google",
-                "Click video publicidad google"
-              )
-            }
-          />
+          {/*<video*/}
+          {/*  ref={refVideo}*/}
+          {/*  className="item-video"*/}
+          {/*  allowFullScreen={true}*/}
+          {/*  controls*/}
+          {/*  src={videoUrl}*/}
+          {/*  onClick={() =>*/}
+          {/*    onEventGaClickVideos(*/}
+          {/*      "click-video-publicidad-google",*/}
+          {/*      "Click video publicidad google"*/}
+          {/*    )*/}
+          {/*  }*/}
+          {/*/>*/}
         </div>
       </div>
     </Container>
