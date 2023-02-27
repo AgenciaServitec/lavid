@@ -24,8 +24,8 @@ export const Services = ({
     {
       title: "6 Unidades",
       img: ImgUnidad6,
-      oldPrice: "300.00",
-      newPrice: "270.00",
+      oldPrice: "240.00",
+      newPrice: "225.00",
     },
   ];
 

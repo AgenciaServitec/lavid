@@ -54,10 +54,10 @@ export const FormContact = ({
     try {
       setLoadingContact(true);
 
-      onEventGaClickButton(
-        "click-boton-enviar-formulario-contactanos",
-        "Click boton enviar de formulario contactanos"
-      );
+      // onEventGaClickButton(
+      //   "click-boton-enviar-formulario-contactanos",
+      //   "Click boton enviar de formulario contactanos"
+      // );
 
       const contact = mapContactData(formData);
 
@@ -77,18 +77,15 @@ export const FormContact = ({
   };
 
   const fetchSendEmail = async (contact) =>
-    await fetch(
-      `${currentConfig.sendingEmailsApiUrl}/generic/contact`,
-      {
-        method: "POST",
-        headers: {
-          "Access-Control-Allow-Origin": null,
-          "content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(contact),
-      }
-    );
+    await fetch(`${currentConfig.sendingEmailsApiUrl}/generic/contact`, {
+      method: "POST",
+      headers: {
+        "Access-Control-Allow-Origin": null,
+        "content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(contact),
+    });
 
   const mapContactData = (formData) => ({
     contact: {

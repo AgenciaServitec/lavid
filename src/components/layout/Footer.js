@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { LogoServitec, SvgEmail, SvgLocation, SvgPhone } from "../../images";
+import { LogoServitec, SvgLocation, SvgPhone } from "../../images";
 import {
   faFacebook,
   faWhatsapp,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { WrapperComponent } from "../ui";
 import { contactData } from "../../firebase";
@@ -45,22 +45,22 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
                 <FontAwesomeIcon icon={faWhatsapp} />
               </a>
             </li>
-            <li
-              onClick={() =>
-                onEventGaClickIcon(
-                  "click-icon-email-contactos@servitec-peru.com",
-                  "Click icon email contactos@servitec-peru.com"
-                )
-              }
-            >
-              <a
-                href="mailto:contactos@servitec-peru.com"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FontAwesomeIcon icon={faEnvelope} />
-              </a>
-            </li>
+            {/*<li*/}
+            {/*  onClick={() =>*/}
+            {/*    onEventGaClickIcon(*/}
+            {/*      "click-icon-email-contactos@servitec-peru.com",*/}
+            {/*      "Click icon email contactos@servitec-peru.com"*/}
+            {/*    )*/}
+            {/*  }*/}
+            {/*>*/}
+            {/*  <a*/}
+            {/*    href="mailto:contactos@servitec-peru.com"*/}
+            {/*    target="_blank"*/}
+            {/*    rel="noreferrer"*/}
+            {/*  >*/}
+            {/*    <FontAwesomeIcon icon={faEnvelope} />*/}
+            {/*  </a>*/}
+            {/*</li>*/}
             <li
               onClick={() =>
                 onEventGaClickIcon(
@@ -116,29 +116,29 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
             </div>
           </div>
 
-          <div className="item-contact">
-            <div className="icon">
-              <SvgEmail width="80px" />
-            </div>
-            <div
-              className="content"
-              onClick={() =>
-                onEventGaClickLink(
-                  "click-link-email-contactos@servitec-peru.com",
-                  "Click link email contactos@servitec-peru.com"
-                )
-              }
-            >
-              <a
-                href="mailto:contactos@servitec-peru.com"
-                target="_blank"
-                rel="noreferrer"
-              >
-                contactos@servitec-peru.com
-              </a>
-              <p>Soporte en Linea</p>
-            </div>
-          </div>
+          {/*<div className="item-contact">*/}
+          {/*  <div className="icon">*/}
+          {/*    <SvgEmail width="80px" />*/}
+          {/*  </div>*/}
+          {/*  <div*/}
+          {/*    className="content"*/}
+          {/*    onClick={() =>*/}
+          {/*      onEventGaClickLink(*/}
+          {/*        "click-link-email-contactos@servitec-peru.com",*/}
+          {/*        "Click link email contactos@servitec-peru.com"*/}
+          {/*      )*/}
+          {/*    }*/}
+          {/*  >*/}
+          {/*    <a*/}
+          {/*      href="mailto:contactos@servitec-peru.com"*/}
+          {/*      target="_blank"*/}
+          {/*      rel="noreferrer"*/}
+          {/*    >*/}
+          {/*      contactos@servitec-peru.com*/}
+          {/*    </a>*/}
+          {/*    <p>Soporte en Linea</p>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
 
           <div className="item-contact">
             <div className="icon">
@@ -160,7 +160,7 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
               >
                 Chorrillos, Perú
               </a>
-              <p>Pastor Davila 117</p>
+              <p>Av.Defensores del morro Nº 479</p>
             </div>
           </div>
         </div>
@@ -266,7 +266,7 @@ const Container = styled.div`
     justify-items: center;
 
     ${mediaQuery.minTablet} {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
 
     .item-contact {
