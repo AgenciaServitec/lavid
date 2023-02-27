@@ -6,4 +6,3 @@ export * from "./useQueryString";
 export * from "./useFormUtils";
 export * from "./useLoadings";
 export * from "./useQuery";
-export * from "./useIntersectionObserver";
