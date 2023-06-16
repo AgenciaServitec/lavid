@@ -19,13 +19,13 @@ export const Services = ({
       title: "3 Unidades",
       img: ImgUnidad3,
       oldPrice: "120.00",
-      newPrice: "105.00",
+      newPrice: "110.00",
     },
     {
       title: "6 Unidades",
       img: ImgUnidad6,
       oldPrice: "240.00",
-      newPrice: "225.00",
+      newPrice: "210.00",
     },
   ];
 
