@@ -38,29 +38,14 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
               }
             >
               <a
-                href="https://api.whatsapp.com/send/?phone=+51941801827&text=Estoy+interesado+en+su+producto+%2F+servicio&app_absent=0"
+                href="https://api.whatsapp.com/send/?phone=+51917605851&text=Estoy+interesado+en+su+producto+%2F+servicio&app_absent=0"
                 target="_blank"
                 rel="noreferrer"
               >
                 <FontAwesomeIcon icon={faWhatsapp} />
               </a>
             </li>
-            {/*<li*/}
-            {/*  onClick={() =>*/}
-            {/*    onEventGaClickIcon(*/}
-            {/*      "click-icon-email-contactos@servitec-peru.com",*/}
-            {/*      "Click icon email contactos@servitec-peru.com"*/}
-            {/*    )*/}
-            {/*  }*/}
-            {/*>*/}
-            {/*  <a*/}
-            {/*    href="mailto:contactos@servitec-peru.com"*/}
-            {/*    target="_blank"*/}
-            {/*    rel="noreferrer"*/}
-            {/*  >*/}
-            {/*    <FontAwesomeIcon icon={faEnvelope} />*/}
-            {/*  </a>*/}
-            {/*</li>*/}
+
             <li
               onClick={() =>
                 onEventGaClickIcon(
@@ -109,37 +94,12 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
                 )
               }
             >
-              <a href="tel:+51941801827" target="_blank" rel="noreferrer">
-                941 801 827
+              <a href="tel:+51917605851" target="_blank" rel="noreferrer">
+                917605851
               </a>
               <p> Lun-Dom 9am-6pm</p>
             </div>
           </div>
-
-          {/*<div className="item-contact">*/}
-          {/*  <div className="icon">*/}
-          {/*    <SvgEmail width="80px" />*/}
-          {/*  </div>*/}
-          {/*  <div*/}
-          {/*    className="content"*/}
-          {/*    onClick={() =>*/}
-          {/*      onEventGaClickLink(*/}
-          {/*        "click-link-email-contactos@servitec-peru.com",*/}
-          {/*        "Click link email contactos@servitec-peru.com"*/}
-          {/*      )*/}
-          {/*    }*/}
-          {/*  >*/}
-          {/*    <a*/}
-          {/*      href="mailto:contactos@servitec-peru.com"*/}
-          {/*      target="_blank"*/}
-          {/*      rel="noreferrer"*/}
-          {/*    >*/}
-          {/*      contactos@servitec-peru.com*/}
-          {/*    </a>*/}
-          {/*    <p>Soporte en Linea</p>*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-
           <div className="item-contact">
             <div className="icon">
               <SvgLocation width="80px" />
@@ -169,19 +129,6 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
             © Copyright 2022 - La Vid / Diseñado con{" "}
             <FontAwesomeIcon icon={faHeart} color="red" /> por{" "}
             {contactData.poweredBy.name}
-            {/*<a*/}
-            {/*  href={contactData.poweredBy.webUrl}*/}
-            {/*  target="_blank"*/}
-            {/*  rel="noreferrer"*/}
-            {/*  onClick={() =>*/}
-            {/*    onEventGaClickLink(*/}
-            {/*      "click-link-agencia-servitec",*/}
-            {/*      "Click link AgenciaServitec"*/}
-            {/*    )*/}
-            {/*  }*/}
-            {/*>*/}
-            {/*  {contactData.poweredBy.name}*/}
-            {/*</a>*/}
           </div>
         </div>
       </>
