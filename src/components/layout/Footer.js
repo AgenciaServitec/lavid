@@ -22,9 +22,6 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
           </div>
           <div className="item-text">
             <h2>La Vid - Vino sin alcohol</h2>
-            {/*<div>*/}
-            {/*  <span></span>*/}
-            {/*</div>*/}
           </div>
         </div>
         <div className="items-socials">
@@ -55,27 +52,11 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
               }
             >
               <a
-                href="https://www.facebook.com/Servitec.chorrillos/"
+                href="https://www.facebook.com/ZumosdeUvaLavid/"
                 target="_blank"
                 rel="noreferrer"
               >
                 <FontAwesomeIcon icon={faFacebook} />
-              </a>
-            </li>
-            <li
-              onClick={() =>
-                onEventGaClickIcon(
-                  "click-icon-youtube-FNMfFy4iKvg",
-                  "Click icon youtube https://youtu.be/FNMfFy4iKvg"
-                )
-              }
-            >
-              <a
-                href="https://youtu.be/FNMfFy4iKvg"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FontAwesomeIcon icon={faYoutube} />
               </a>
             </li>
           </ul>
