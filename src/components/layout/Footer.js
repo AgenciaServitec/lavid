@@ -4,7 +4,6 @@ import { LogoServitec, SvgLocation, SvgPhone } from "../../images";
 import {
   faFacebook,
   faWhatsapp,
-  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -101,7 +100,7 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
               >
                 Chorrillos, Perú
               </a>
-              <p>Av.Defensores del morro Nº 479</p>
+              <p>Calle Néstor Bermúdez N° 113</p>
             </div>
           </div>
         </div>
