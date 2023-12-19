@@ -26,8 +26,8 @@ export const Contact = (onEventGaClickLink) => {
                     )
                   }
                 >
-                  <a href="tel:+51967205588" target="_blank" rel="noreferrer">
-                    967205588
+                  <a href="tel:+51918181990" target="_blank" rel="noreferrer">
+                    918181990
                   </a>
                   <p> Lun-Dom 9am-6pm</p>
                 </div>
