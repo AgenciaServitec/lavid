@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { LogoServitec, SvgLocation, SvgPhone } from "../../images";
-import { faFacebook, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { WrapperComponent } from "../ui";
 import { contactData } from "../../firebase";
+import { faFacebook, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
   <Container id="footer">
@@ -97,7 +97,7 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
               >
                 Chorrillos, Perú
               </a>
-              <p>Av.Defensores del morro Nº 479</p>
+              <p>Calle Néstor Bermúdez N° 113</p>
             </div>
           </div>
         </div>

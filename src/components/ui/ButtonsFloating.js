@@ -22,7 +22,7 @@ export const ButtonsFloating = ({ onEventGaClickButton }) => (
       >
         <div className="item-text">
           <div>Atención inmediata</div>
-          <div>967205588</div>
+          <div>918181990</div>
         </div>
         <div className="item-icon">
           <FontAwesomeIcon icon={faWhatsapp} className="icon" />
