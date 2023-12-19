@@ -37,7 +37,7 @@ export const HeaderDesktop = ({
             <li>PRODUCTO</li>
           </a>
           <span onClick={() => navigate("/contact")}>
-            <li>CONTÁCTO</li>
+            <li>CONTACTO</li>
           </span>
         </ul>
       </div>

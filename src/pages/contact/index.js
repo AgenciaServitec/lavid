@@ -11,7 +11,7 @@ export const Contact = (onEventGaClickLink) => {
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} md={12}>
           <div className="contact-icons">
-            <h2 className="title-contacts">Contactanos</h2>
+            <h2 className="title-contacts">Contáctanos</h2>
             <div className="items-contacts">
               <div className="item-contact">
                 <div className="icon">
@@ -26,8 +26,8 @@ export const Contact = (onEventGaClickLink) => {
                     )
                   }
                 >
-                  <a href="tel:+51917605851" target="_blank" rel="noreferrer">
-                    917605851
+                  <a href="tel:+51967205588" target="_blank" rel="noreferrer">
+                    967205588
                   </a>
                   <p> Lun-Dom 9am-6pm</p>
                 </div>

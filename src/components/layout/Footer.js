@@ -1,11 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { LogoServitec, SvgLocation, SvgPhone } from "../../images";
-import {
-  faFacebook,
-  faWhatsapp,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
@@ -75,8 +71,8 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
                 )
               }
             >
-              <a href="tel:+51917605851" target="_blank" rel="noreferrer">
-                917605851
+              <a href="tel:+51967205588" target="_blank" rel="noreferrer">
+                967205588
               </a>
               <p> Lun-Dom 9am-6pm</p>
             </div>
