@@ -4,83 +4,53 @@ import { SvgEmail, SvgLocation, SvgPhone } from "../../images";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import Row from "antd/lib/row";
 import Col from "antd/lib/col";
+import { contactData } from "../../firebase";
 
-export const Contact = (onEventGaClickLink) => {
+function ItemContact({
+  svg = <SvgPhone width="80px" />,
+  title = "title",
+  subtitle = "subtitle",
+  href = "#",
+}) {
+  return (
+    <article className="item-contact">
+      <div className="icon">{svg}</div>
+      <div className="content">
+        <a href={href} target="_blank" rel="noreferrer">
+          {title}
+          <p style={{ fontSize: "16px" }}>{subtitle} </p>
+        </a>
+      </div>
+    </article>
+  );
+}
+
+export const Contact = () => {
   return (
     <Container>
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} md={12}>
           <div className="contact-icons">
             <h2 className="title-contacts">Contáctanos</h2>
-            <div className="items-contacts">
-              <div className="item-contact">
-                <div className="icon">
-                  <SvgPhone width="80px" />
-                </div>
-                <div
-                  className="content"
-                  onClick={() =>
-                    onEventGaClickLink(
-                      "click-link-telefono-941801827",
-                      "Click link telefono 941801827"
-                    )
-                  }
-                >
-                  <a href="tel:+51918181990" target="_blank" rel="noreferrer">
-                    918181990
-                  </a>
-                  <p> Lun-Dom 9am-6pm</p>
-                </div>
-              </div>
-
-              <div className="item-contact">
-                <div className="icon">
-                  <SvgEmail width="80px" />
-                </div>
-                <div
-                  className="content"
-                  onClick={() =>
-                    onEventGaClickLink(
-                      "click-link-email-contactos@servitec-peru.com",
-                      "Click link email contactos@servitec-peru.com"
-                    )
-                  }
-                >
-                  <a
-                    href="mailto:contactos@servitecperu.com"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    contactos@servitecperu.com
-                  </a>
-                  <p>Soporte en Linea</p>
-                </div>
-              </div>
-
-              <div className="item-contact">
-                <div className="icon">
-                  <SvgLocation width="80px" />
-                </div>
-                <div
-                  className="content"
-                  onClick={() =>
-                    onEventGaClickLink(
-                      "click-link-ubicacion-EiSoB4t5tQ3rG5YU6",
-                      "Click link ubicacion https://goo.gl/maps/EiSoB4t5tQ3rG5YU6"
-                    )
-                  }
-                >
-                  <a
-                    href="https://goo.gl/maps/EiSoB4t5tQ3rG5YU6"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Chorrillos, Perú
-                  </a>
-                  <p>Av.Defensores del Morro Nº479 Chorrillos Lima</p>
-                </div>
-              </div>
-            </div>
+            <section className="items-contacts">
+              <ItemContact
+                title={contactData.numbers.phone}
+                subtitle="Lun-Dom 9am-6pm"
+                href={`tel:+51${contactData.numbers.phone}`}
+              />
+              <ItemContact
+                svg={<SvgEmail width="80px" />}
+                title={contactData.emails.sales}
+                subtitle="Soporte en Linea"
+                href={`mailto:${contactData.emails.sales}`}
+              />
+              <ItemContact
+                svg={<SvgLocation width="80px" />}
+                title="Chorrillos, Perú"
+                subtitle={contactData.directions.local1Name}
+                href={contactData.directions.local1Link}
+              />
+            </section>
           </div>
         </Col>
         <Col xs={24} sm={24} md={12}>
@@ -104,9 +74,10 @@ export const Contact = (onEventGaClickLink) => {
 
 const Container = styled.div`
   width: 100%;
-  min-height: 100%;
   height: auto;
-  padding: 3rem 1em;
+  max-width: 1280px;
+  margin: auto;
+  padding: 3rem 2em;
   .contact-icons {
     padding-left: 1rem;
     .title-contacts {
@@ -134,6 +105,7 @@ const Container = styled.div`
 
         ${mediaQuery.minTablet} {
           grid-template-columns: 1fr auto;
+          gap: 2em;
         }
 
         .icon {
@@ -142,15 +114,17 @@ const Container = styled.div`
 
         .content {
           text-align: center;
-          line-height: 3rem;
+          line-height: 2rem;
 
           p {
             opacity: 1;
+            font-weight: 300;
           }
 
           a {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #0e0d0d;
+            font-weight: 700;
           }
 
           a:hover {

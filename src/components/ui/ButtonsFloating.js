@@ -3,26 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import styled, { css } from "styled-components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { contactData } from "../../firebase";
 
-export const ButtonsFloating = ({ onEventGaClickButton }) => (
+export const ButtonsFloating = () => (
   <Container>
-    <a
-      href={`https://api.whatsapp.com/send/?phone=+51918181990&text=Estoy+interesado+en+su+producto+%2F+servicio&app_absent=0`}
-      target="_blank"
-      rel="noreferrer"
-    >
-      <WrapperButton
-        bg="#5cc753"
-        onClick={() =>
-          onEventGaClickButton(
-            "click-boton-wsp-939185927",
-            "Click boton wsp 939 185 927"
-          )
-        }
-      >
+    <a href={contactData.socialLinks.whatsapp} target="_blank" rel="noreferrer">
+      <WrapperButton bg="#5cc753">
         <div className="item-text">
           <div>Atención inmediata</div>
-          <div>918181990</div>
+          <div>{contactData.numbers.wsp}</div>
         </div>
         <div className="item-icon">
           <FontAwesomeIcon icon={faWhatsapp} className="icon" />
