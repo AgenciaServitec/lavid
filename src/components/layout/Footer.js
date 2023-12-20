@@ -6,9 +6,9 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { WrapperComponent } from "../ui";
 import { contactData } from "../../firebase";
-import { faFacebook, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
-export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
+export const Footer = () => (
   <Container id="footer">
     <WrapperComponent>
       <>
@@ -22,31 +22,7 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
         </div>
         <div className="items-socials">
           <ul>
-            <li
-              onClick={() =>
-                onEventGaClickIcon(
-                  "click-icon-wsp-941801827",
-                  "Click icon wsp 941 801 827"
-                )
-              }
-            >
-              <a
-                href="https://api.whatsapp.com/send/?phone=+51917605851&text=Estoy+interesado+en+su+producto+%2F+servicio&app_absent=0"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FontAwesomeIcon icon={faWhatsapp} />
-              </a>
-            </li>
-
-            <li
-              onClick={() =>
-                onEventGaClickIcon(
-                  "click-icon-facebook-servitec-chorrillos",
-                  "Click icon facebook Servitec.chorrillos"
-                )
-              }
-            >
+            <li>
               <a
                 href="https://www.facebook.com/ZumosdeUvaLavid/"
                 target="_blank"
@@ -62,17 +38,13 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
             <div className="icon">
               <SvgPhone width="80px" />
             </div>
-            <div
-              className="content"
-              onClick={() =>
-                onEventGaClickLink(
-                  "click-link-telefono-941801827",
-                  "Click link telefono 941801827"
-                )
-              }
-            >
-              <a href="tel:+51918181990" target="_blank" rel="noreferrer">
-                918181990
+            <div className="content">
+              <a
+                href={`tel:+51${contactData.numbers.phone}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {contactData.numbers.phone}
               </a>
               <p> Lun-Dom 9am-6pm</p>
             </div>
@@ -81,23 +53,17 @@ export const Footer = ({ onEventGaClickIcon, onEventGaClickLink }) => (
             <div className="icon">
               <SvgLocation width="80px" />
             </div>
-            <div
-              className="content"
-              onClick={() =>
-                onEventGaClickLink(
-                  "click-link-ubicacion-EiSoB4t5tQ3rG5YU6",
-                  "Click link ubicacion https://goo.gl/maps/EiSoB4t5tQ3rG5YU6"
-                )
-              }
-            >
+            <div className="content">
               <a
-                href="https://goo.gl/maps/EiSoB4t5tQ3rG5YU6"
+                href={contactData.directions.local1Link}
                 target="_blank"
                 rel="noreferrer"
               >
                 Chorrillos, Perú
+                <p style={{ fontSize: "16px" }}>
+                  {contactData.directions.local1Name}
+                </p>
               </a>
-              <p>Calle Néstor Bermúdez N° 113</p>
             </div>
           </div>
         </div>
