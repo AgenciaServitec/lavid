@@ -57,7 +57,7 @@ export const Contact = () => {
           <div className="contact-map">
             <iframe
               title="map vida sana"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.177213609453!2d-77.02684798496466!3d-12.168335347487432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b79b77b7175f%3A0xa6b195dde66ca32b!2sAv.%20Defensores%20del%20Morro%20479%2C%20Chorrillos%2015064!5e0!3m2!1ses-419!2spe!4v1671745777155!5m2!1ses-419!2spe"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7800.270941810622!2d-77.0185048349182!3d-12.171178899999989!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b783084c9897%3A0x1af86a78a89c069e!2sCa.%20Coronel%20Bermudez%20113%2C%20Lima%2015064!5e0!3m2!1ses!2spe!4v1703090666952!5m2!1ses!2spe"
               width="auto"
               height="450"
               allowFullScreen=""
@@ -65,6 +65,8 @@ export const Contact = () => {
               frameBorder={0}
               referrerPolicy="no-referrer-when-downgrade"
             />
+
+
           </div>
         </Col>
       </Row>
