@@ -3,26 +3,14 @@ import { Link } from "react-router-dom";
 import { ImgLogoLavid } from "../../images";
 import { useNavigate } from "react-router";
 
-export const HeaderDesktop = ({
-  eventGaClickLink,
-  onClickVisibleFormContact,
-}) => {
+export const HeaderDesktop = () => {
   const navigate = useNavigate();
 
   return (
     <Container>
       <div className="logo-img">
         <Link to="/">
-          <img
-            src={ImgLogoLavid}
-            alt="Publicidad google Logo"
-            onClick={() =>
-              eventGaClickLink(
-                "click-link-logo-publicidad-google",
-                "Click link logo publicidad google"
-              )
-            }
-          />
+          <img src={ImgLogoLavid} alt="Publicidad google Logo" />
         </Link>
       </div>
       <div className="list">
