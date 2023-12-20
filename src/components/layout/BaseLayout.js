@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { ImgLogoLavid } from "../../images";
-import { useAnalyticsEventTracker, useDevice } from "../../hooks";
+import { useDevice } from "../../hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Drawer } from "./Drawer";
@@ -15,19 +15,6 @@ export const BaseLayout = ({ children, onClickVisibleFormContact }) => {
   const navigate = useNavigate();
 
   const [visibleDrawer, setVisibleDrawer] = useState(false);
-
-  const gaEventTrackerButtons = useAnalyticsEventTracker("Buttons");
-  const gaEventTrackerIcons = useAnalyticsEventTracker("Icons");
-  const gaEventTrackerLinks = useAnalyticsEventTracker("Links");
-
-  const eventGaClickButton = (action, label) =>
-    gaEventTrackerButtons(action, label);
-
-  const eventGaClickIcon = (action, label) =>
-    gaEventTrackerIcons(action, label);
-
-  const eventGaClickLink = (action, label) =>
-    gaEventTrackerLinks(action, label);
 
   return (
     <Container>
@@ -47,10 +34,6 @@ export const BaseLayout = ({ children, onClickVisibleFormContact }) => {
                     alt="Lavid Logo"
                     onClick={() => {
                       navigate("/");
-                      eventGaClickLink(
-                        "click-link-logo-publicidad-google",
-                        "Click link logo publicidad google"
-                      );
                     }}
                   />
                 </div>
@@ -62,20 +45,14 @@ export const BaseLayout = ({ children, onClickVisibleFormContact }) => {
                 </div>
               </div>
             ) : (
-              <HeaderDesktop
-                eventGaClickLink={eventGaClickLink}
-                onClickVisibleFormContact={onClickVisibleFormContact}
-              />
+              <HeaderDesktop />
             )}
           </>
         </WrapperComponent>
       </div>
       <div className="body">{children}</div>
-      <Footer
-        onEventGaClickIcon={eventGaClickIcon}
-        onEventGaClickLink={eventGaClickLink}
-      />
-      <ButtonsFloating onEventGaClickButton={eventGaClickButton} />
+      <Footer />
+      <ButtonsFloating />
     </Container>
   );
 };
