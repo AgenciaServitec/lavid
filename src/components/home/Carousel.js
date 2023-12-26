@@ -1,35 +1,12 @@
 import React from "react";
-import AntCarousel from "antd/lib/carousel";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
-import { useDevice } from "../../hooks";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { ItemCarousel } from "./ItemCarousel";
 
-export const Carousel = ({
-  onClickVisibleFormContact,
-  onEventGaClickButton,
-}) => {
-  const { isMobile } = useDevice();
-
+export const Carousel = ({ onClickVisibleFormContact }) => {
   return (
     <Container>
-      <AntCarousel
-        autoplay
-        autoplaySpeed={5 * 1000}
-        arrows={!isMobile}
-        prevArrow={<FontAwesomeIcon icon={faChevronLeft} />}
-        nextArrow={<FontAwesomeIcon icon={faChevronRight} />}
-      >
-        <ItemCarousel
-          onClickVisibleFormContact={onClickVisibleFormContact}
-          onEventGaClickButton={onEventGaClickButton}
-        />
-      </AntCarousel>
+      <ItemCarousel onClickVisibleFormContact={onClickVisibleFormContact} />
     </Container>
   );
 };

@@ -4,32 +4,39 @@ import styled from "styled-components";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { useNavigate } from "react-router";
 
-export const Drawer = ({
-  visibleDrawer,
-  onSetVisibleDrawer,
-  onClickVisibleFormContact,
-}) => {
+export const Drawer = ({ visibleDrawer, onSetVisibleDrawer }) => {
   const navigate = useNavigate();
+
+  const handleNavigate = (url = "/") => {
+    onSetVisibleDrawer(false);
+    navigate(url);
+  };
+
   return (
     <ComponentDrawerAntd
       title={null}
       placement="right"
       onClose={() => onSetVisibleDrawer(false)}
-      visible={visibleDrawer}
+      open={visibleDrawer}
     >
-      <MenuItem onClick={() => onSetVisibleDrawer(false)}>
-        <span onClick={() => navigate("/")}>Inicio</span>
+      <MenuItem
+        onClick={() => {
+          handleNavigate();
+        }}
+      >
+        <span>Inicio</span>
       </MenuItem>
-      <MenuItem onClick={() => onSetVisibleDrawer(false)}>
-        <a href="#about-us">Nosotros</a>
-      </MenuItem>
-      <MenuItem onClick={() => onSetVisibleDrawer(false)}>
-        <a href="#services">Productos</a>
+
+      <MenuItem
+        onClick={() => {
+          handleNavigate();
+        }}
+      >
+        <span>Productos</span>
       </MenuItem>
       <MenuItem
         onClick={() => {
-          onSetVisibleDrawer(false);
-          onClickVisibleFormContact();
+          handleNavigate("/contact");
         }}
       >
         <span>Contácto</span>
