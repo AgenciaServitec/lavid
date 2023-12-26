@@ -3,8 +3,8 @@ import { includes } from "lodash";
 
 const hostName = window.location.hostname;
 
-const hostsProduction = ["lavid.life"];
-console.log("ambiente de confing firebase", hostsProduction);
+const hostsProduction = ["lavid.life", "zumodeuvavida.com"];
+
 const currentEnvironment = includes(hostsProduction, hostName)
   ? "production"
   : "development";
