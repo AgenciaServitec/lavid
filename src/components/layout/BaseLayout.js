@@ -58,15 +58,16 @@ export const BaseLayout = ({ children, onClickVisibleFormContact }) => {
 };
 
 const Container = styled.div`
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  max-width: 1536px;
+  margin: auto;
   height: auto;
   position: relative;
 
   .header {
     position: relative;
     width: 100%;
-    max-width: 1250px;
+    max-width: 1536px;
     height: auto;
     background: #fff;
     margin: auto;

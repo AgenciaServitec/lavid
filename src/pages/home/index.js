@@ -8,7 +8,6 @@ export const Home = ({
   onClickVisibleFormContact,
   visibleFormContact,
   onEventGaClickButton,
-  onEventGaClickVideos,
 }) => {
   const gaEventTrackerIcons = useAnalyticsEventTracker("Icons");
 
@@ -18,16 +17,8 @@ export const Home = ({
   return (
     <>
       <Container>
-        <Carousel
-          onClickVisibleFormContact={onClickVisibleFormContact}
-          onEventGaClickButton={onEventGaClickButton}
-        />
+        <Carousel onClickVisibleFormContact={onClickVisibleFormContact} />
         <WrapperComponent>
-          {/*<ServiceSection*/}
-          {/*  onClickVisibleFormContact={onClickVisibleFormContact}*/}
-          {/*  onEventGaClickButton={onEventGaClickButton}*/}
-          {/*  onEventGaClickVideos={onEventGaClickVideos}*/}
-          {/*/>*/}
           <Services
             onClickVisibleFormContact={onClickVisibleFormContact}
             onEventGaClickButton={onEventGaClickButton}

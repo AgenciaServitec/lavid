@@ -4,67 +4,55 @@ import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { Button } from "../ui";
 import { ImgCarousel } from "../../images";
 
-export const ItemCarousel = ({
-  onClickVisibleFormContact,
-  onEventGaClickButton,
-}) => {
-  return (
-    <Container>
-      <img src={ImgCarousel} alt="Vino" />
-      <div className="content-item">
-        <div className="first-content">
-          <div className="txt-items">
-            <h1>Bebe con alegre corazón</h1>
-            <h2>0% de alcohol</h2>
-          </div>
-          <div
-            className="btn-item"
-            onClick={() => {
-              onClickVisibleFormContact(true);
-              onEventGaClickButton(
-                "click-boton-cotizar",
-                "Click boton cotizar"
-              );
-            }}
-          >
-            <Button text="Contactar" type="secondary" />
-          </div>
+export const ItemCarousel = ({ onClickVisibleFormContact }) => (
+  <Container $bgImage={ImgCarousel}>
+    <div className="content-item">
+      <div className="first-content">
+        <div className="txt-items">
+          <h1>Bebe con alegre corazón</h1>
+          <h2>0% de alcohol</h2>
+        </div>
+        <div
+          className="btn-item"
+          onClick={() => {
+            onClickVisibleFormContact(true);
+          }}
+        >
+          <Button text="Contactar" type="secondary" />
         </div>
       </div>
-    </Container>
-  );
-};
+    </div>
+  </Container>
+);
 
 const Container = styled.div`
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(${({ $bgImage }) => $bgImage});
   width: 100%;
-  position: relative;
-
-  img {
-    width: 100%;
-    height: 85vh;
-    object-fit: cover;
-  }
+  height: auto;
 
   .content-item {
-    position: absolute;
-    z-index: 99999;
-    top: 0;
-    left: 5%;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      359deg,
+      rgb(6 6 6 / 82%) 0%,
+      rgba(18, 17, 17, 0.247) 35%,
+      rgb(23 23 23 / 65%) 100%
+    );
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
     grid-gap: 1rem;
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 1250px;
-    height: 100%;
-    margin: auto;
-    padding: 1rem;
+    padding: 2.5em 1em;
     ${mediaQuery.minTablet} {
       grid-template-columns: 45% 1fr;
       grid-template-rows: 1fr;
       grid-gap: 1.7rem;
-      padding: 1.7rem 2rem;
+      padding: 4em 2.5em;
+    }
+
+    ${mediaQuery.minDesktop} {
+      height: 70vh;
     }
   }
 
@@ -86,19 +74,21 @@ const Container = styled.div`
       align-items: start;
 
       h1 {
-        font-size: 2.3rem;
+        font-size: 2rem;
         line-height: 2.2rem;
+        font-weight: 600;
         color: #fff;
         ${mediaQuery.minTablet} {
           font-size: 3.5rem;
-          line-height: 3rem;
+          line-height: 4rem;
         }
       }
       h2 {
         color: #fff;
+        font-size: 1.5em;
+        font-weight: 400;
         ${mediaQuery.minTablet} {
-          font-size: 3.5rem;
-          line-height: 3rem;
+          font-size: 2.5rem;
         }
       }
     }
@@ -107,21 +97,6 @@ const Container = styled.div`
       width: 100%;
       display: flex;
       justify-content: start;
-    }
-  }
-
-  .second-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    img {
-      width: 80%;
-      max-width: 23rem;
-      object-fit: contain;
-      ${mediaQuery.minTablet} {
-        width: 90%;
-      }
     }
   }
 `;
