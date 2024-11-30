@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { ImgLogoLavid } from "../../images";
-import { useNavigate } from "react-router";
+import {Link} from "react-router-dom";
+import {useNavigate} from "react-router";
+import {ImgLogoLavid2} from "../../images";
 
 export const HeaderDesktop = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ export const HeaderDesktop = () => {
     <Container>
       <div className="logo-img">
         <Link to="/">
-          <img src={ImgLogoLavid} alt="Publicidad google Logo" />
+          <img src={ImgLogoLavid2} alt="Publicidad google Logo" />
         </Link>
       </div>
       <div className="list">
