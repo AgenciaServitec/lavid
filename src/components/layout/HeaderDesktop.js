@@ -10,7 +10,7 @@ export const HeaderDesktop = () => {
     <Container>
       <div className="logo-img">
         <Link to="/">
-          <img src={ImgLogoLavid2} alt="Publicidad google Logo" />
+          <img src={ImgLogoLavid2} alt="La vid.life" />
         </Link>
       </div>
       <div className="list">
