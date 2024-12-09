@@ -8,10 +8,11 @@ export { default as ImgCongratulation } from "./others/congratulation.webp";
 export { default as ImgLogoLavid } from "./others/logo-lavid.webp";
 export { default as ImgLogoLavid2 } from "./others/logo-lavid-2.webp";
 export { default as ImgCarousel } from "./others/carousel-1.webp";
-export { default as ImgUnidad1 } from "./others/unidad-1.webp";
-export { default as ImgUnidad3 } from "./others/unidad-3.webp";
-export { default as ImgUnidad6 } from "./others/unidad-6.webp";
+export { default as ImgUnidad1 } from "./others/unit-1.webp";
+export { default as ImgUnidad3 } from "./others/unit-3.webp";
+export { default as ImgUnidad6 } from "./others/unit-6.webp";
 export { default as ImgBenefitsWine } from "./others/benefits-vino.webp";
+export { default as BannerLaVid } from "./others/banner-lavid.webp";
 
 // -------SVG-------
 export * from "./svg/Phone";

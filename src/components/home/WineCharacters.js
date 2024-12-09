@@ -1,10 +1,5 @@
 import styled from "styled-components";
-import {
-  ImgBenefitsWine,
-  SvgHappyFace,
-  SvgLessSymbol,
-  SvgSun,
-} from "../../images";
+import {BannerLaVid, SvgHappyFace, SvgLessSymbol, SvgSun,} from "../../images";
 
 export const WineCharacters = () => {
   return (
@@ -35,7 +30,7 @@ export const WineCharacters = () => {
         <h2>Propiedades</h2>
 
         <div className="item-image">
-          <img src={ImgBenefitsWine} alt="Beneficios del vino" />
+          <img src={BannerLaVid} alt="Beneficios del vino" />
         </div>
       </div>
     </Container>
