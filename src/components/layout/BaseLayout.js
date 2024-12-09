@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
-import { ImgLogoLavid } from "../../images";
-import { useDevice } from "../../hooks";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Drawer } from "./Drawer";
-import { Footer } from "./Footer";
-import { ButtonsFloating, WrapperComponent } from "../ui";
-import { useNavigate } from "react-router";
-import { HeaderDesktop } from "./HeaderDesktop";
+import {ImgLogoLavid2} from "../../images";
+import {useDevice} from "../../hooks";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faBars} from "@fortawesome/free-solid-svg-icons";
+import {Drawer} from "./Drawer";
+import {Footer} from "./Footer";
+import {ButtonsFloating, WrapperComponent} from "../ui";
+import {useNavigate} from "react-router";
+import {HeaderDesktop} from "./HeaderDesktop";
 
 export const BaseLayout = ({ children, onClickVisibleFormContact }) => {
   const { isMobile } = useDevice();
@@ -30,8 +30,8 @@ export const BaseLayout = ({ children, onClickVisibleFormContact }) => {
               <div className="menu-mobile">
                 <div className="item-logo">
                   <img
-                    src={ImgLogoLavid}
-                    alt="Lavid Logo"
+                    src={ImgLogoLavid2}
+                    alt="La vid.life"
                     onClick={() => {
                       navigate("/");
                     }}
