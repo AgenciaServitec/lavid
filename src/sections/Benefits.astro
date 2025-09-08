@@ -1,0 +1,107 @@
+---
+import ContentWidth from "../components/ContentWidth.astro";
+import { BenefitsList } from "../data-list";
+---
+<section id="benefits" class="relative py-20 bg-gradient-to-b from-black via-[#1A001D] to-black">
+    <ContentWidth>
+        <div class="text-center mb-14">
+            <h2 class="text-4xl md:text-5xl font-serif text-white mb-4 drop-shadow-lg">
+                Beneficios del Zumo de Uva La Vid
+            </h2>
+            <p class="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                Una bebida natural, rica en nutrientes que cuida tu salud y eleva tu bienestar en cada sorbo.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div id="big-card" class="relative rounded-2xl overflow-hidden shadow-md hover:shadow-[#C84485]/30 transition-all duration-300 h-80 lg:h-96">
+                <img
+                        id="big-img"
+                        src={BenefitsList[0].images}
+                        alt={BenefitsList[0].title}
+                        class="w-full h-full object-cover transition-opacity duration-200"
+                />
+                <div id="big-overlay" class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6 flex flex-col justify-end">
+                    <h3 id="big-title" class="text-white font-semibold text-2xl mb-2">{BenefitsList[0].title}</h3>
+                    <p id="big-desc" class="text-gray-300 text-sm">{BenefitsList[0].description}</p>
+                </div>
+            </div>
+
+            <div
+                    id="right-column"
+                    class="flex flex-col gap-4 overflow-y-auto h-80 lg:h-96 pr-2"
+                    style="-webkit-overflow-scrolling: touch;"
+            >
+                {BenefitsList.map((benefit, idx) => (
+                        <button
+                                type="button"
+                                class="right-btn flex-none w-full flex items-center gap-4 bg-gradient-to-b from-black/60 to-[#1A001D]/70 rounded-2xl overflow-hidden shadow-md hover:shadow-[#C84485]/30 transition-all duration-250 p-3 text-left focus:outline-none cursor-pointer"
+                                data-img={benefit.images}
+                                data-title={benefit.title}
+                                data-desc={benefit.description}
+                                aria-pressed={idx === 0 ? "true" : "false"}
+                        >
+                            <img
+                                    src={benefit.images}
+                                    alt={benefit.title}
+                                    class="w-24 h-24 object-cover rounded-md flex-shrink-0"
+                            />
+                            <div class="min-h-[72px]">
+                                <h4 class="text-white font-semibold text-lg mb-1">{benefit.title}</h4>
+                                <p class="text-gray-300 text-sm">{benefit.description}</p>
+                            </div>
+                        </button>
+                ))}
+            </div>
+        </div>
+    </ContentWidth>
+
+    <style is:inline>
+        #right-column::-webkit-scrollbar { width: 10px; }
+        #right-column::-webkit-scrollbar-track { background: transparent; }
+        #right-column::-webkit-scrollbar-thumb { background-color: rgba(200,68,133,0.18); border-radius: 999px; }
+        #right-column { scrollbar-width: thin; scrollbar-color: rgba(200,68,133,0.18) transparent; }
+        .right-btn[aria-pressed="true"] { box-shadow: 0 6px 24px rgba(200,68,133,0.14); outline: 1px solid rgba(200,68,133,0.18); }
+    </style>
+
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+            const rightBtns = Array.from(document.querySelectorAll('#right-column .right-btn'));
+            const bigImg = document.getElementById('big-img');
+            const bigTitle = document.getElementById('big-title');
+            const bigDesc = document.getElementById('big-desc');
+
+            if (!bigImg || !bigTitle || !bigDesc) return;
+
+            bigImg.style.transition = 'opacity 180ms ease';
+
+            rightBtns.forEach((btn, i) => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const img = btn.getAttribute('data-img');
+                    const title = btn.getAttribute('data-title');
+                    const desc = btn.getAttribute('data-desc');
+                    if (!img) return;
+
+                    rightBtns.forEach(b => b.setAttribute('aria-pressed', 'false'));
+                    btn.setAttribute('aria-pressed', 'true');
+
+                    bigImg.style.opacity = '0';
+                    setTimeout(() => {
+                        bigImg.src = img;
+                        bigImg.alt = title || bigImg.alt;
+                        bigTitle.textContent = title || '';
+                        bigDesc.textContent = desc || '';
+                        bigImg.style.opacity = '1';
+                    }, 160);
+
+                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+
+                if (i === 0) {
+                    btn.setAttribute('aria-pressed', 'true');
+                }
+            });
+        });
+    </script>
+</section>

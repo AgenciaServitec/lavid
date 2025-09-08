@@ -1,2 +1,2 @@
-export {default as servicesList} from "./services.json"
-export {default as aboutUsList} from "./aboutUs.json"
+export {default as ProductsList} from './products.json';
+export {default as BenefitsList} from './benefits.json';
