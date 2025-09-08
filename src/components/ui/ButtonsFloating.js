@@ -7,7 +7,13 @@ import { contactData } from "../../firebase";
 
 export const ButtonsFloating = () => (
   <Container>
-    <a href={contactData.socialLinks.whatsapp} target="_blank" rel="noreferrer">
+    <a
+      href={
+        "https://api.whatsapp.com/send?phone=51972252744&text=Estoy%20interesado%20en%20su%20vino%20sin%20alcohol"
+      }
+      target="_blank"
+      rel="noreferrer"
+    >
       <WrapperButton bg="#5cc753">
         <div className="item-text">
           <div>Atención inmediata</div>
