@@ -4,10 +4,12 @@ import { Home, Page404, ContactSuccess, Contact } from "../pages";
 
 export const Router = ({
   onClickVisibleFormContact,
+  oneChangeMessageCustom,
   visibleFormContact,
   onEventGaClickButton,
   onEventGaClickVideos,
   onEventGaClickSuccessful,
+  messageCustom,
 }) => {
   return (
     <Routes>
@@ -18,6 +20,8 @@ export const Router = ({
           <BaseLayout onClickVisibleFormContact={onClickVisibleFormContact}>
             <Home
               onClickVisibleFormContact={onClickVisibleFormContact}
+              oneChangeMessageCustom={oneChangeMessageCustom}
+              messageCustom={messageCustom}
               visibleFormContact={visibleFormContact}
               onEventGaClickButton={onEventGaClickButton}
               onEventGaClickVideos={onEventGaClickVideos}
@@ -37,15 +41,15 @@ export const Router = ({
           </BaseLayout>
         }
       />
-        <Route
-            exact
-            path="/contact"
-            element={
-                <BaseLayout>
-                    <Contact/>
-                </BaseLayout>
-            }
-        />
+      <Route
+        exact
+        path="/contact"
+        element={
+          <BaseLayout>
+            <Contact />
+          </BaseLayout>
+        }
+      />
       <Route path="*" element={<Page404 />} />
     </Routes>
   );

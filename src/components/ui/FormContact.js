@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import ModalAntd from "antd/lib/modal/Modal";
 import { mediaQuery } from "../../styles/constants/mediaQuery";
@@ -23,11 +23,17 @@ export const FormContact = ({
   visibleFormContact,
   onClickVisibleFormContact,
   onEventGaClickButton,
+  oneChangeMessageCustom,
+  messageCustom,
 }) => {
   const { isMobile } = useDevice();
   const navigate = useNavigate();
 
   const [loadingContact, setLoadingContact] = useState(false);
+
+  useEffect(() => {
+    setValue("message", messageCustom);
+  }, [messageCustom]);
 
   const schema = yup.object({
     firstName: yup.string().required(),
@@ -42,6 +48,7 @@ export const FormContact = ({
     formState: { errors },
     handleSubmit,
     control,
+    setValue,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -102,7 +109,10 @@ export const FormContact = ({
       title={<h3 style={{ margin: "0" }}>CONTÁCTANOS</h3>}
       visible={visibleFormContact}
       onOk={() => onClickVisibleFormContact()}
-      onCancel={() => onClickVisibleFormContact()}
+      onCancel={() => {
+        onClickVisibleFormContact();
+        oneChangeMessageCustom("");
+      }}
       footer={null}
     >
       <Form onSubmit={handleSubmit(onSubmitFetchContacts)}>
@@ -225,6 +235,7 @@ export const FormContact = ({
                   "click-boton-cancelar-de-formulario-contactanos",
                   "Click boton cancelar de formulario contactanos"
                 );
+                oneChangeMessageCustom("");
               }}
               disabled={loadingContact}
               text="Cancelar"
