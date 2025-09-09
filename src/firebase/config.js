@@ -1,11 +1,10 @@
 import configs from "./configs.json";
-import { includes } from "lodash";
 
 const hostName = window.location.hostname;
 
 const hostsProduction = ["lavid.life", "zumodeuvavida.com"];
 
-const currentEnvironment = includes(hostsProduction, hostName)
+const currentEnvironment = hostsProduction.includes(hostName)
   ? "production"
   : "development";
 

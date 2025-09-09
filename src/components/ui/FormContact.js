@@ -7,7 +7,7 @@ import Col from "antd/lib/col";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useFormUtils } from "../../hooks";
+import { useDevice, useFormUtils } from "../../hooks";
 import { Input } from "./Input";
 import { Form } from "./Form";
 import { defaultTo } from "lodash";
@@ -16,10 +16,8 @@ import { Select } from "./Select";
 import { InputNumber } from "./InputNumber";
 import { TextArea } from "./TextArea";
 import { notification } from "./notification";
-import { currentConfig } from "../../firebase";
 import { useNavigate } from "react-router";
 import { Button } from "./Button";
-import { useDevice } from "../../hooks";
 
 export const FormContact = ({
   visibleFormContact,
@@ -77,28 +75,26 @@ export const FormContact = ({
   };
 
   const fetchSendEmail = async (contact) =>
-    await fetch(`${currentConfig.sendingEmailsApiUrl}/generic/contact`, {
+    await fetch("https://api-servitecsales.web.app/emails/contact", {
       method: "POST",
       headers: {
         "Access-Control-Allow-Origin": null,
         "content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(contact),
+      body: JSON.stringify({ contact }),
     });
 
   const mapContactData = (formData) => ({
-    contact: {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      phone: {
-        number: formData.phoneNumber,
-        countryCode: formData.countryCode,
-      },
-      message: formData.message,
-      hostname: window.location.hostname || "lavid.life",
+    firstName: formData.firstName,
+    lastName: formData.lastName,
+    email: formData.email,
+    phone: {
+      number: formData.phoneNumber,
+      countryCode: formData.countryCode,
     },
+    message: formData.message,
+    hostname: "lavid.life",
   });
 
   return (
