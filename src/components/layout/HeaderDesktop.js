@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import {Link} from "react-router-dom";
-import {useNavigate} from "react-router";
-import {ImgLogoLavid2} from "../../images";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
+import { ImgLogoLavid2 } from "../../images";
 
 export const HeaderDesktop = () => {
   const navigate = useNavigate();
@@ -18,15 +18,12 @@ export const HeaderDesktop = () => {
           <span onClick={() => navigate("/")}>
             <li>INICIO</li>
           </span>
-          <a href="#about-us">
-            <li>NOSOTROS</li>
-          </a>
           <a href="#services">
             <li>PRODUCTO</li>
           </a>
-          <span onClick={() => navigate("/contact")}>
+          <a href="#contact">
             <li>CONTACTO</li>
-          </span>
+          </a>
         </ul>
       </div>
     </Container>

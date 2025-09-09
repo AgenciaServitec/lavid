@@ -7,6 +7,7 @@ import { Button } from "../ui";
 export const Services = ({
   onClickVisibleFormContact,
   onEventGaClickButton,
+  oneChangeMessageCustom,
 }) => {
   const arraysWine = [
     {
@@ -43,6 +44,7 @@ export const Services = ({
               newPrice={array.newPrice}
               onClickVisibleFormContact={onClickVisibleFormContact}
               onEventGaClickButton={onEventGaClickButton}
+              oneChangeMessageCustom={oneChangeMessageCustom}
             />
           ))}
         </div>
@@ -58,7 +60,10 @@ const ItemService = ({
   newPrice,
   onClickVisibleFormContact,
   onEventGaClickButton,
+  oneChangeMessageCustom,
 }) => {
+  const message = `Necesito esta cantidad ${title}`;
+
   return (
     <div className="item-img">
       <img src={img} alt={title} className="image-bg" />
@@ -82,6 +87,7 @@ const ItemService = ({
             "click-boton-empezar-ahora",
             "Click boton empezar ahora"
           );
+          oneChangeMessageCustom(message);
         }}
       />
     </div>

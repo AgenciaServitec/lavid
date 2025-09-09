@@ -34,12 +34,10 @@ export const Drawer = ({ visibleDrawer, onSetVisibleDrawer }) => {
       >
         <span>Productos</span>
       </MenuItem>
-      <MenuItem
-        onClick={() => {
-          handleNavigate("/contact");
-        }}
-      >
-        <span>Contácto</span>
+      <MenuItem>
+        <a href="#contact">
+          <span>Contácto</span>
+        </a>
       </MenuItem>
     </ComponentDrawerAntd>
   );

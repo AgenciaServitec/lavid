@@ -18,6 +18,7 @@ export const App = () => {
   const firebaseApp = currentConfig.firebaseApp;
 
   const [visibleFormContact, setVisibleFormContact] = useState(false);
+  const [messageCustom, setMessageCustom] = useState("");
 
   useEffect(() => {
     ReactGA4.initialize(firebaseApp.measurementId);
@@ -37,12 +38,16 @@ export const App = () => {
   const eventGaClickSuccessful = (action, label) =>
     gaEventTrackerSuccessful(action, label);
 
+  const oneChangeMessageCustom = (message) => setMessageCustom(message);
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Router
           onClickVisibleFormContact={onClickVisibleFormContact}
+          oneChangeMessageCustom={oneChangeMessageCustom}
+          messageCustom={messageCustom}
           visibleFormContact={visibleFormContact}
           onEventGaClickButton={eventGaClickButton}
           onEventGaClickVideos={eventGaClickVideos}
