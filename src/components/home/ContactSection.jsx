@@ -25,7 +25,7 @@ const ItemContact = ({
   );
 };
 
-export const ContactSection = ({}) => {
+export const ContactSection = () => {
   return (
     <Container>
       <Row gutter={[16, 16]}>
