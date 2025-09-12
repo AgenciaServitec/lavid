@@ -55,9 +55,10 @@ export const ContactSection = ({}) => {
         </Col>
         <Col xs={24} sm={24} md={12}>
           <div className="contact-map">
+
             <iframe
               title="map vida sana"
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7800.270941810622!2d-77.0185048349182!3d-12.171178899999989!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b783084c9897%3A0x1af86a78a89c069e!2sCa.%20Coronel%20Bermudez%20113%2C%20Lima%2015064!5e0!3m2!1ses!2spe!4v1703090666952!5m2!1ses!2spe"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4118.546308329478!2d-77.0246593!3d-12.168340599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b79b77b17dad%3A0xa63366df12e89f05!2sAv.%20Defensores%20del%20Morro%20479%2C%20Chorrillos%2015064!5e1!3m2!1ses-419!2spe!4v1757635715985!5m2!1ses-419!2spe"
               width="auto"
               height="450"
               allowFullScreen=""
@@ -78,8 +79,10 @@ const Container = styled.div`
   max-width: 1280px;
   margin: auto;
   padding: 3rem 2em;
+
   .contact-icons {
     padding-left: 1rem;
+
     .title-contacts {
       justify-items: center;
       text-align: center;
