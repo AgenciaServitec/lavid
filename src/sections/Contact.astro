@@ -1,0 +1,39 @@
+---
+import ContentWidth from "../components/ContentWidth.astro";
+import ContactForm from "../components/ContactForm.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section
+        id="contact"
+        class="relative py-20 bg-gradient-to-b from-black via-[#1A001D] to-black overflow-hidden"
+>
+    <ContentWidth>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-center md:text-left motion-safe:animate-fade-in">
+                <h2 class="text-4xl md:text-5xl font-serif text-white leading-tight drop-shadow-lg">
+                    Conectemos contigo
+                </h2>
+                <p class="text-gray-300 text-lg leading-relaxed max-w-md mx-auto md:mx-0">
+                    Déjanos un mensaje y descubre cómo nuestros zumos de uva La Vid pueden acompañar tus momentos más especiales.
+                </p>
+
+                <div class="flex flex-col gap-4 mt-8">
+                    <a
+                            href="tel:+51972252744"
+                            class="flex items-center justify-center md:justify-start gap-3 text-gray-300 hover:text-[#C84485] transition-colors"
+                    >
+                        <Icon name="mdi:phone" class="w-6 h-6 text-[#C84485]" />
+                        +51 972 252 744
+                    </a>
+                </div>
+            </div>
+
+            <div class="motion-safe:animate-slide-in-right">
+                <div class="bg-black/50 backdrop-blur-md rounded-2xl shadow-lg p-8 border border-[#C84485]/40 hover:border-[#C84485]/70 transition">
+                    <ContactForm />
+                </div>
+            </div>
+        </div>
+    </ContentWidth>
+</section>

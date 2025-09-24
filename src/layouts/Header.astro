@@ -1,0 +1,133 @@
+---
+import ContentWidth from "../components/ContentWidth.astro";
+---
+
+<header class="sticky top-0 z-40 bg-gradient-to-r from-black via-[#1A001D] to-black backdrop-blur-sm border-b border-[#2e003e]/50 shadow-md">
+  <ContentWidth>
+    <div class="flex items-center justify-between py-3">
+      <a href="/" class="flex items-center gap-3 group">
+        <img
+            src="/logo.webp"
+            class="w-12 md:w-16 h-auto transition-transform duration-300 group-hover:scale-110 drop-shadow-lg"
+            alt="Logo de la vid"
+            loading="eager"
+        />
+        <span class="hidden md:block text-2xl font-serif text-white group-hover:text-[#C84485] transition-colors tracking-wide">
+          La Vid
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10">
+        {[
+          { href: "#", label: "Inicio" },
+          { href: "#products", label: "Producto" },
+          { href: "#benefits", label: "Beneficios" },
+          { href: "#contact", label: "Contacto" }
+        ].map(({ href, label }) => (
+            <a
+                href={href}
+                class="relative text-gray-300 hover:text-[#C84485] transition-colors font-medium tracking-wide group"
+            >
+              {label}
+              <span
+                  class="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-[#C84485] to-[#6a1b9a] transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+        ))}
+      </nav>
+
+
+      <button
+          id="menu-btn"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          class="md:hidden text-gray-300 hover:text-[#C84485] transition-colors focus:outline-none"
+      >
+        <span class="sr-only">Abrir menú</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </ContentWidth>
+</header>
+
+<div id="mobile-menu" aria-hidden="true" class="fixed inset-0 z-50 hidden">
+  <div class="overlay absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+  <div
+      class="menu-panel relative z-10 flex flex-col items-center justify-center min-h-screen px-8 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] transition-all duration-300 opacity-0 translate-y-4"
+  >
+    <nav class="flex flex-col items-center gap-6 text-lg font-medium">
+      <a href="#" class="text-gray-300 hover:text-[#C84485] transition-colors">Inicio</a>
+      <a href="#products" class="text-gray-300 hover:text-[#C84485] transition-colors">Producto</a>
+      <a href="#benefits" class="text-gray-300 hover:text-[#C84485] transition-colors">Beneficios</a>
+      <a href="#contact" class="text-gray-300 hover:text-[#C84485] transition-colors">Contacto</a>
+    </nav>
+
+    <button id="menu-close" class="mt-10 text-sm text-gray-400 hover:text-gray-200 transition-colors">
+      Cerrar ✕
+    </button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const overlay = mobileMenu?.querySelector(".overlay");
+    const panel = mobileMenu?.querySelector(".menu-panel");
+    const closeBtn = document.getElementById("menu-close");
+
+    const openMenu = () => {
+      mobileMenu?.classList.remove("hidden");
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+
+      requestAnimationFrame(() => {
+        overlay?.classList.remove("opacity-0", "pointer-events-none");
+        overlay?.classList.add("opacity-100");
+        panel?.classList.remove("opacity-0", "translate-y-4");
+        panel?.classList.add("opacity-100", "translate-y-0");
+
+        mobileMenu?.setAttribute("aria-hidden", "false");
+        menuBtn?.setAttribute("aria-expanded", "true");
+      });
+    };
+
+    const closeMenu = () => {
+      overlay?.classList.add("opacity-0", "pointer-events-none");
+      overlay?.classList.remove("opacity-100");
+      panel?.classList.add("opacity-0", "translate-y-4");
+      panel?.classList.remove("opacity-100", "translate-y-0");
+
+      mobileMenu?.setAttribute("aria-hidden", "true");
+      menuBtn?.setAttribute("aria-expanded", "false");
+
+      setTimeout(() => {
+        mobileMenu?.classList.add("hidden");
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+      }, 300);
+    };
+
+    menuBtn?.addEventListener("click", () => {
+      if (mobileMenu?.classList.contains("hidden")) openMenu();
+      else closeMenu();
+    });
+
+    overlay?.addEventListener("click", closeMenu);
+
+    closeBtn?.addEventListener("click", closeMenu);
+
+    panel?.addEventListener("click", (e) => {
+      if (e.target.tagName === "A") closeMenu();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !mobileMenu?.classList.contains("hidden")) closeMenu();
+    });
+  });
+</script>

@@ -1,0 +1,41 @@
+---
+const { title, description, price, offer, image } = Astro.props;
+---
+
+<div class="group relative bg-gradient-to-b from-black/70 to-[#1A001D]/90 rounded-2xl border border-[#C84485]/20 shadow-lg overflow-hidden transition-all duration-500 hover:shadow-[#C84485]/40 hover:-translate-y-2">
+    <div class="relative overflow-hidden">
+        <img
+                src={image}
+                alt={title}
+                class="w-full h-80 object-cover transform transition-transform duration-500 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+    </div>
+
+    <div class="p-6 text-center">
+        <h3 class="text-2xl font-serif text-white mb-3 tracking-wide">{title}</h3>
+        <p class="text-gray-300 text-sm leading-relaxed mb-5">
+            {description}
+        </p>
+
+        <div class="mb-6">
+            {offer ? (
+                    <div class="flex justify-center items-end gap-3">
+                        <span class="text-gray-400 line-through text-base">{price}</span>
+                        <span class="text-[#C84485] font-bold text-2xl drop-shadow-md">{offer}</span>
+                    </div>
+            ) : (
+                    <span class="text-white font-semibold text-xl">{price}</span>
+            )}
+        </div>
+
+        <a
+                href="https://wa.me/+51972252744?text=Hola!+Estoy+interesado+en+comprar+Zumo+de+Uva+La+Vid.+Tienen+Stock?"
+                target="_blank"
+                class="inline-block px-8 py-3 rounded-full font-medium text-white shadow-lg bg-gradient-to-r from-[#C84485] to-[#8B2C60] transition-all duration-300 hover:scale-105 hover:shadow-[#C84485]/50 relative overflow-hidden"
+        >
+            <span class="relative z-10">Comprar Ahora</span>
+            <span class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></span>
+        </a>
+    </div>
+</div>
