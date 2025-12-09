@@ -1,0 +1,130 @@
+<form
+        id="formContact"
+        method="POST"
+        class="grid grid-cols-2 gap-6 text-sm md:text-base relative"
+>
+    <div id="formMessage" class="absolute -top-12 left-0 w-full text-center"></div>
+
+    <div class="col-span-2 flex flex-col gap-2">
+        <label for="fullName" class="text-gray-200 text-sm font-medium">Apellidos y Nombres</label>
+        <input
+                type="text"
+                id="fullName"
+                placeholder="Ingrese sus apellidos y nombres"
+                required
+                class="px-4 py-3 rounded-xl bg-[#1A001D]/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C84485] focus:border-[#C84485] transition-all"
+        />
+    </div>
+
+    <div class="col-span-2 flex flex-col gap-2">
+        <label for="email" class="text-gray-200 text-sm font-medium">Correo electrónico</label>
+        <input
+                type="email"
+                id="email"
+                placeholder="Ingrese su correo"
+                required
+                class="px-4 py-3 rounded-xl bg-[#1A001D]/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C84485] focus:border-[#C84485] transition-all"
+        />
+    </div>
+
+    <div class="col-span-2 flex flex-col gap-2">
+        <label for="phoneNumber" class="text-gray-200 text-sm font-medium">Teléfono</label>
+        <input
+                type="tel"
+                id="phoneNumber"
+                placeholder="Ingrese su teléfono"
+                required
+                class="px-4 py-3 rounded-xl bg-[#1A001D]/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C84485] focus:border-[#C84485] transition-all"
+        />
+    </div>
+
+    <div class="col-span-2 flex flex-col gap-2">
+        <label for="message" class="text-gray-200 text-sm font-medium">Mensaje</label>
+        <textarea
+                id="message"
+                rows="4"
+                placeholder="Ingrese su mensaje"
+                required
+                class="px-4 py-3 rounded-xl bg-[#1A001D]/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#C84485] focus:border-[#C84485] transition-all"
+        ></textarea>
+    </div>
+
+    <button
+            type="submit"
+            class="col-span-2 mt-6 px-6 py-3 bg-gradient-to-r from-[#C84485] to-[#800040] text-white font-medium rounded-full shadow-lg hover:scale-105 hover:shadow-[#C84485]/50 transition-transform duration-300"
+    >
+        Enviar Mensaje
+    </button>
+</form>
+
+
+<script>
+    const form = document.getElementById("formContact");
+    const formMessage = document.getElementById("formMessage");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const fullName = (document.getElementById("fullName")).value.trim();
+        const email = (document.getElementById("email")).value.trim();
+        const phoneNumber = (document.getElementById("phoneNumber")).value.trim();
+        const message = (document.getElementById("message")).value.trim();
+        const button = form.querySelector("button");
+
+        const contact = {
+            fullName,
+            email,
+            phone: {
+                countryCode: "+51",
+                number: phoneNumber,
+            },
+            message,
+            hostname: "lavid.life",
+        };
+
+        try {
+            button.disabled = true;
+            button.textContent = "Enviando...";
+            button.classList.add("opacity-60", "cursor-not-allowed");
+
+            const result = await fetch("https://api-servitecsales.web.app/emails/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({ contact }),
+            });
+
+            if (result.ok) {
+                form.reset();
+                formMessage.innerHTML = `
+          <p class="bg-green-600/80 text-white px-4 py-2 rounded-lg shadow-md animate-fade-in">
+            ✅ ¡Tu mensaje fue enviado con éxito!
+          </p>
+        `;
+            } else {
+                formMessage.innerHTML = `
+          <p class="bg-red-600/80 text-white px-4 py-2 rounded-lg shadow-md animate-fade-in">
+            ❌ Hubo un problema al enviar el mensaje. Intenta nuevamente.
+          </p>
+        `;
+            }
+        } catch (error) {
+            formMessage.innerHTML = `
+        <p class="bg-red-600/80 text-white px-4 py-2 rounded-lg shadow-md animate-fade-in">
+          ⚠️ Error de conexión. Inténtalo más tarde.
+        </p>
+      `;
+            console.error("Error:", error);
+        } finally {
+            button.disabled = false;
+            button.textContent = "Enviar Mensaje";
+            button.classList.remove("opacity-60", "cursor-not-allowed");
+
+            setTimeout(() => {
+                formMessage.innerHTML = "";
+            }, 3000);
+        }
+    });
+</script>

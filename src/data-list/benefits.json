@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Vitaminas",
+    "description": "A, B2, B6, C y E que fortalecen tu organismo.",
+    "images":"/benefits/vitaminas.jpg"
+  },
+  {
+    "title": "Minerales",
+    "description": "Potasio, Calcio, Magnesio, Fósforo y Hierro.",
+    "images":"/benefits/minerales.jpg"
+  },
+  {
+    "title": "Depurador",
+    "description": "Ayuda a desintoxicar y limpiar tu organismo.",
+    "images":"/benefits/depurador.jpg"
+  },
+  {
+    "title": "Digestión",
+    "description": "Regula el tránsito intestinal de manera natural.",
+    "images":"/benefits/digestion.webp"
+  },
+  {
+    "title": "Diurético",
+    "description": "Contribuye a eliminar líquidos y toxinas.",
+    "images":"/benefits/diuretico.jpg"
+  },
+  {
+    "title": "Anticancerígeno",
+    "description": "Propiedades que protegen y fortalecen tu salud.",
+    "images":"/benefits/anticancerigeno.jpg"
+  },
+  {
+    "title": "Antiestrés",
+    "description": "Relaja y contribuye al bienestar mental.",
+    "images":"/benefits/antiestres.jpg"
+  },
+  {
+    "title": "Sistema Inmunológico",
+    "description": "Fortalece tus defensas naturales.",
+    "images":"/benefits/sistema-inmunologico.webp"
+  }
+]

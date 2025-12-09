@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+import ContentWidth from "../components/ContentWidth.astro";
+---
+
+<footer class="bg-gradient-to-b from-black via-[#1a000b] to-black text-gray-300">
+  <ContentWidth>
+    <div class="flex justify-between items-center pb-10 pt-12 text-sm">
+      <div class="absolute left-1/2 transform -translate-x-1/2 text-center">
+        <img src="/logo.webp" alt="Logo La Vid" class="mx-auto w-20 mb-2 opacity-90" />
+        <p class="text-xs uppercase tracking-widest text-gray-400">Zumo de uva sin Alcohol</p>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-700/50 my-4"></div>
+
+    <div class="flex justify-center gap-6 py-4">
+      <a href="https://www.facebook.com/ZumosdeUvaLavid" target="_blank" aria-label="Facebook" class="hover:text-[#C84485] transition-colors">
+        <Icon name="mdi:facebook" size={20}/>
+      </a>
+      <a href="https://www.instagram.com/zumodeuvalavid/" target="_blank" aria-label="LinkedIn" class="hover:text-[#C84485] transition-colors">
+        <Icon name="mdi:instagram" size={20}/>
+      </a>
+    </div>
+
+    <div class="text-center text-xs text-gray-500 pb-6">
+      &copy; {new Date().getFullYear()} La Vid. Todos los Derechos Reservados
+    </div>
+  </ContentWidth>
+</footer>

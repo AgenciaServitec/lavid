@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Vino Individual",
+    "description": "Una botella para esos momentos especiales contigo mismo o en compañía cercana.",
+    "price":"S/.40.00",
+    "offer": "S/.39.00",
+    "image": "/one-wine.png"
+  },
+  {
+    "title": "Pack de 3",
+    "description": "Comparte el sabor elegante de la uva con tus seres queridos en pequeñas reuniones.",
+    "price":"S/.120.00",
+    "offer": "S/.110.00",
+    "image": "/three-wines.png"
+  },
+  {
+    "title": "Pack de 6",
+    "description": "La elección ideal para celebraciones y momentos que merecen compartirse en grande.",
+    "price":"S/.240.00",
+    "offer": "S/.210.00",
+    "image": "/six-wines.png"
+  }
+]

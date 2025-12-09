@@ -1,0 +1,37 @@
+---
+import ContentWidth from "../components/ContentWidth.astro";
+---
+
+<section
+        class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden"
+>
+    <picture>
+        <source media="(min-width: 769px)" srcset="/desktop-hero2.jpg" />
+        <img
+                src="/mobile-hero2.jpg"
+                alt="Fondo elegante La Vid"
+                class="absolute inset-0 w-full h-full object-contain lg:object-cover"
+                loading="eager"
+        />
+    </picture>
+
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-[#1A001D]/60 to-black/80"></div>
+
+    <ContentWidth>
+        <div class="relative z-10 text-center max-w-2xl mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-serif text-white mb-4 drop-shadow-lg">
+                El sabor elegante de la uva
+            </h1>
+            <p class="text-gray-300 text-base md:text-lg mb-8 leading-relaxed">
+                Disfruta de la esencia de la vid en su forma más pura:
+                <span class="text-[#C84485] font-semibold">zumo de uva sin alcohol</span>, creado para compartir en cada momento especial.
+            </p>
+            <a
+                    href="#products"
+                    class="inline-block px-8 py-3 rounded-lg font-medium text-white shadow-lg bg-gradient-to-r from-[#C84485] to-[#8B2C60] transition-all duration-300 hover:scale-105 hover:shadow-[#C84485]/40"
+            >
+                Explorar Productos
+            </a>
+        </div>
+    </ContentWidth>
+</section>
