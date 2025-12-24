@@ -49,10 +49,9 @@ export const FormContact = ({
     resolver: yupResolver(schema),
   });
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         setValue("message", messageCustom);
-    }, [messageCustom]);
+    }, [messageCustom,setValue]);
 
   const { required, error } = useFormUtils({ errors, schema });
 
