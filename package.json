@@ -30,8 +30,8 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^8.50.1",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "typescript": "^5.9.3"
   },
   "scripts": {
     "start": "react-scripts start",
