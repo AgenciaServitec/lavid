@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import {mediaQuery} from "../../styles/constants/mediaQuery";
-import {faCheck} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {Button} from "../ui";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from "../ui";
 
 export const AboutUs = ({
   onClickVisibleFormContact,
