@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import styled, { css } from "styled-components";
+import React, {useEffect, useState} from "react";
+import styled, {css} from "styled-components";
 import ModalAntd from "antd/lib/modal/Modal";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
+import {mediaQuery} from "../../styles/constants/mediaQuery";
 import Row from "antd/lib/row";
 import Col from "antd/lib/col";
-import { Controller, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import {Controller, useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useDevice, useFormUtils } from "../../hooks";
-import { Input } from "./Input";
-import { Form } from "./Form";
-import { defaultTo } from "lodash";
-import { phoneCodes } from "../../data-list";
-import { Select } from "./Select";
-import { InputNumber } from "./InputNumber";
-import { TextArea } from "./TextArea";
-import { notification } from "./notification";
-import { useNavigate } from "react-router";
-import { Button } from "./Button";
+import {useDevice, useFormUtils} from "../../hooks";
+import {Input} from "./Input";
+import {Form} from "./Form";
+import {defaultTo} from "lodash";
+import {phoneCodes} from "../../data-list";
+import {Select} from "./Select";
+import {InputNumber} from "./InputNumber";
+import {TextArea} from "./TextArea";
+import {notification} from "./notification";
+import {useNavigate} from "react-router";
+import {Button} from "./Button";
 
 export const FormContact = ({
   visibleFormContact,
@@ -30,10 +30,6 @@ export const FormContact = ({
   const navigate = useNavigate();
 
   const [loadingContact, setLoadingContact] = useState(false);
-
-  useEffect(() => {
-    setValue("message", messageCustom);
-  }, [messageCustom]);
 
   const schema = yup.object({
     firstName: yup.string().required(),
@@ -53,16 +49,15 @@ export const FormContact = ({
     resolver: yupResolver(schema),
   });
 
+    useEffect(() => {
+        setValue("message", messageCustom);
+    }, [messageCustom]);
+
   const { required, error } = useFormUtils({ errors, schema });
 
   const onSubmitFetchContacts = async (formData) => {
     try {
       setLoadingContact(true);
-
-      // onEventGaClickButton(
-      //   "click-boton-enviar-formulario-contactanos",
-      //   "Click boton enviar de formulario contactanos"
-      // );
 
       const contact = mapContactData(formData);
 

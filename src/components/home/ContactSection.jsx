@@ -1,10 +1,10 @@
 import Row from "antd/lib/row";
 import Col from "antd/lib/col";
-import { contactData } from "../../firebase";
-import { SvgEmail, SvgLocation, SvgPhone } from "../../images";
+import {contactData} from "../../firebase";
+import {SvgEmail, SvgLocation, SvgPhone} from "../../images";
 import React from "react";
 import styled from "styled-components";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
+import {mediaQuery} from "../../styles/constants/mediaQuery";
 
 const ItemContact = ({
   svg = <SvgPhone width="80px" />,
@@ -25,7 +25,7 @@ const ItemContact = ({
   );
 };
 
-export const ContactSection = ({}) => {
+export const ContactSection = () => {
   return (
     <Container>
       <Row gutter={[16, 16]}>
