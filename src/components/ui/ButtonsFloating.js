@@ -9,7 +9,7 @@ export const ButtonsFloating = () => (
   <Container>
     <a
       href={
-        "https://api.whatsapp.com/send?phone=51972252744&text=Estoy%20interesado%20en%20su%20vino%20sin%20alcohol"
+        "https://api.whatsapp.com/send?phone=51932508739&text=Estoy%20interesado%20en%20su%20vino%20sin%20alcohol"
       }
       target="_blank"
       rel="noreferrer"
