@@ -57,7 +57,7 @@ export const ContactSection = () => {
           <div className="contact-map">
             <iframe
               title="map vida sana"
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7800.270941810622!2d-77.0185048349182!3d-12.171178899999989!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b783084c9897%3A0x1af86a78a89c069e!2sCa.%20Coronel%20Bermudez%20113%2C%20Lima%2015064!5e0!3m2!1ses!2spe!4v1703090666952!5m2!1ses!2spe"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4839.6729311152685!2d-77.0246593!3d-12.1683406!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b79b77b17dad%3A0xa63366df12e89f05!2sAv.%20Defensores%20del%20Morro%20479%2C%20Chorrillos%2015064!5e1!3m2!1ses-419!2spe!4v1766791954767!5m2!1ses-419!2spe"
               width="auto"
               height="450"
               allowFullScreen=""
