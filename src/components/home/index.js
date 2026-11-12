@@ -4,3 +4,5 @@ export * from "./Services";
 export * from "../layout/Footer";
 export * from "./WineCharacters";
 export * from "./ContactSection";
+export * from "./HeroContactForm";
+export * from "./Hero";

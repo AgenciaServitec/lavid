@@ -1,50 +1,52 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  Carousel,
   ContactSection,
   Services,
   WineCharacters,
+  Hero
 } from "../../components";
 import { FormContact, WrapperComponent } from "../../components/ui";
 import { useAnalyticsEventTracker } from "../../hooks";
 
 export const Home = ({
-  onClickVisibleFormContact,
-  oneChangeMessageCustom,
-  visibleFormContact,
-  onEventGaClickButton,
-  messageCustom,
-}) => {
+                       onClickVisibleFormContact,
+                       oneChangeMessageCustom,
+                       visibleFormContact,
+                       onEventGaClickButton,
+                       messageCustom,
+                     }) => {
   const gaEventTrackerIcons = useAnalyticsEventTracker("Icons");
 
   const eventGaClickIcon = (action, label) =>
-    gaEventTrackerIcons(action, label);
+      gaEventTrackerIcons(action, label);
 
   return (
-    <>
-      <Container>
-        <Carousel onClickVisibleFormContact={onClickVisibleFormContact} />
-        <WrapperComponent>
-          <Services
+      <>
+        <Container>
+          <Hero onClickVisibleFormContact={onClickVisibleFormContact} />
+
+          <WrapperComponent>
+            <Services
+                onClickVisibleFormContact={onClickVisibleFormContact}
+                onEventGaClickButton={onEventGaClickButton}
+                oneChangeMessageCustom={oneChangeMessageCustom}
+            />
+            <WineCharacters />
+          </WrapperComponent>
+
+          <ContactSection />
+        </Container>
+
+        <FormContact
+            visibleFormContact={visibleFormContact}
             onClickVisibleFormContact={onClickVisibleFormContact}
+            onEventGaClickIcon={eventGaClickIcon}
             onEventGaClickButton={onEventGaClickButton}
             oneChangeMessageCustom={oneChangeMessageCustom}
-          />
-
-          <WineCharacters />
-        </WrapperComponent>
-        <ContactSection />
-      </Container>
-      <FormContact
-        visibleFormContact={visibleFormContact}
-        onClickVisibleFormContact={onClickVisibleFormContact}
-        onEventGaClickIcon={eventGaClickIcon}
-        onEventGaClickButton={onEventGaClickButton}
-        oneChangeMessageCustom={oneChangeMessageCustom}
-        messageCustom={messageCustom}
-      />
-    </>
+            messageCustom={messageCustom}
+        />
+      </>
   );
 };
 
