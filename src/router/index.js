@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { BaseLayout } from "../components";
-import { Home, Page404, ContactSuccess, Contact } from "../pages";
+import {Home, Page404, ContactSuccess, Contact, DistributorPage} from "../pages";
 
 export const Router = ({
   onClickVisibleFormContact,
@@ -47,6 +47,15 @@ export const Router = ({
         element={
           <BaseLayout>
             <Contact />
+          </BaseLayout>
+        }
+      />
+        <Route
+        exact
+        path="/distribuidores"
+        element={
+          <BaseLayout>
+            <DistributorPage />
           </BaseLayout>
         }
       />

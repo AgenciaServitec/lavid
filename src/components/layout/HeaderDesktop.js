@@ -1,32 +1,32 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
 import { ImgLogoLavid2 } from "../../images";
 
 export const HeaderDesktop = () => {
-  const navigate = useNavigate();
-
   return (
-    <Container>
-      <div className="logo-img">
-        <Link to="/">
-          <img src={ImgLogoLavid2} alt="La vid.life" />
-        </Link>
-      </div>
-      <div className="list">
-        <ul>
-          <span onClick={() => navigate("/")}>
-            <li>INICIO</li>
-          </span>
-          <a href="#services">
-            <li>PRODUCTO</li>
-          </a>
-          <a href="#contact">
-            <li>CONTACTO</li>
-          </a>
-        </ul>
-      </div>
-    </Container>
+      <Container>
+        <div className="logo-img">
+          <Link to="/">
+            <img src={ImgLogoLavid2} alt="La vid.life" />
+          </Link>
+        </div>
+        <div className="list">
+          <ul>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <li>INICIO</li>
+            </Link>
+            <a href="/#services" style={{ textDecoration: 'none' }}>
+              <li>PRODUCTO</li>
+            </a>
+            <a href="/#contact" style={{ textDecoration: 'none' }}>
+              <li>CONTACTO</li>
+            </a>
+            <Link to="/distribuidores" style={{ textDecoration: 'none' }}>
+              <li>DISTRIBUIDORES</li>
+            </Link>
+          </ul>
+        </div>
+      </Container>
   );
 };
 
@@ -57,6 +57,11 @@ const Container = styled.section`
       align-items: center;
       padding: 0;
       margin: 0;
+
+      a, Link {
+        text-decoration: none;
+      }
+
       li {
         color: ${({ theme }) => theme.colors.quaternary};
         font-weight: bold;
