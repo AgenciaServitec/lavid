@@ -117,7 +117,7 @@ export const DistributorForm = () => {
                 </div>
 
                 <div className="input-group">
-                    <label>RUC (Opcional o requerido)</label>
+                    <label>RUC</label>
                     <input type="text" name="ruc" value={formData.ruc} onChange={handleChange} required placeholder="Número de RUC" maxLength="11" />
                 </div>
 
