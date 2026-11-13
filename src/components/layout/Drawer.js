@@ -1,8 +1,8 @@
 import React from "react";
 import DrawerAntd from "antd/lib/drawer";
 import styled from "styled-components";
-import {mediaQuery} from "../../styles/constants/mediaQuery";
-import {useNavigate} from "react-router";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { useNavigate } from "react-router";
 
 export const Drawer = ({ visibleDrawer, onSetVisibleDrawer }) => {
   const navigate = useNavigate();
@@ -34,14 +34,20 @@ export const Drawer = ({ visibleDrawer, onSetVisibleDrawer }) => {
       >
         <span>Productos</span>
       </MenuItem>
+
       <MenuItem>
-        <a href="#contact">
-          <span>Contácto</span>
+        <a
+          href="/partners"
+          className="partner-cta"
+          onClick={() => onSetVisibleDrawer(false)}
+        >
+          <span>Partners</span>
         </a>
       </MenuItem>
+
       <MenuItem>
-        <a href="/partners">
-          <span>Partners</span>
+        <a href="#contact" onClick={() => onSetVisibleDrawer(false)}>
+          <span>Contácto</span>
         </a>
       </MenuItem>
     </ComponentDrawerAntd>
@@ -70,10 +76,44 @@ const ComponentDrawerAntd = styled(DrawerAntd)`
 
 const MenuItem = styled.div`
   margin-bottom: 1.5rem;
+
+  a {
+    text-decoration: none;
+  }
+
   a,
   span {
     cursor: pointer;
-    color: #000;
+    color: ${({ theme }) => theme.colors.quaternary};
     font-size: 1.7rem;
+    font-weight: 500;
+    transition: all 0.25s ease-in-out;
+  }
+
+  a:not(.partner-cta):hover span,
+  > span:hover {
+    color: ${({ theme }) => theme.colors.sextiary};
+  }
+
+  a.partner-cta {
+    display: inline-block;
+    padding: 0.4rem 1.5rem;
+    border: 1.5px solid ${({ theme }) => theme.colors.sextiary};
+    border-radius: ${({ theme }) => theme.border_radius.xxx_large};
+    background-color: transparent;
+
+    span {
+      color: ${({ theme }) => theme.colors.sextiary};
+      font-weight: bold;
+    }
+
+    &:hover,
+    &:active {
+      background-color: ${({ theme }) => theme.colors.sextiary};
+
+      span {
+        color: ${({ theme }) => theme.colors.secondary};
+      }
+    }
   }
 `;
