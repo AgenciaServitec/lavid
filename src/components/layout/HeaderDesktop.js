@@ -21,8 +21,8 @@ export const HeaderDesktop = () => {
             <a href="/#contact" style={{ textDecoration: 'none' }}>
               <li>CONTACTO</li>
             </a>
-            <Link to="/distribuidores" style={{ textDecoration: 'none' }}>
-              <li>DISTRIBUIDORES</li>
+            <Link to="/partners" style={{ textDecoration: 'none' }}>
+              <li>PARTNERS</li>
             </Link>
           </ul>
         </div>

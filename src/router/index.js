@@ -52,7 +52,7 @@ export const Router = ({
       />
         <Route
         exact
-        path="/distribuidores"
+        path="/partners"
         element={
           <BaseLayout>
             <DistributorPage />

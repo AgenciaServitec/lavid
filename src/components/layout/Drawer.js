@@ -1,8 +1,8 @@
 import React from "react";
 import DrawerAntd from "antd/lib/drawer";
 import styled from "styled-components";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
-import { useNavigate } from "react-router";
+import {mediaQuery} from "../../styles/constants/mediaQuery";
+import {useNavigate} from "react-router";
 
 export const Drawer = ({ visibleDrawer, onSetVisibleDrawer }) => {
   const navigate = useNavigate();
@@ -37,6 +37,11 @@ export const Drawer = ({ visibleDrawer, onSetVisibleDrawer }) => {
       <MenuItem>
         <a href="#contact">
           <span>Contácto</span>
+        </a>
+      </MenuItem>
+      <MenuItem>
+        <a href="/partners">
+          <span>Partners</span>
         </a>
       </MenuItem>
     </ComponentDrawerAntd>
