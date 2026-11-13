@@ -1,84 +1,85 @@
-
 import React from "react";
 import styled from "styled-components";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
-import { ItemCarousel } from "./ItemCarousel";
+import {mediaQuery} from "../../styles/constants/mediaQuery";
+import {ItemCarousel} from "./ItemCarousel";
 
 export const Carousel = ({ onClickVisibleFormContact }) => {
-  return (
-      <Container>
-        <ItemCarousel
-            onClickVisibleFormContact={onClickVisibleFormContact}
-        />
-      </Container>
-  );
+    return (
+        <Container>
+            <ItemCarousel
+                onClickVisibleFormContact={onClickVisibleFormContact}
+            />
+        </Container>
+    );
 };
 
 const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-
-  .ant-carousel,
-  .slick-slider,
-  .slick-list,
-  .slick-track,
-  .slick-slide,
-  .slick-slide > div {
-    height: 100% !important;
-  }
-
-  .slick-slide {
-    overflow: hidden;
-  }
-
-  .slick-slide img {
     width: 100%;
     height: 100%;
-    display: block;
-    object-fit: cover;
-  }
+    position: relative;
 
-  ${mediaQuery.minDesktop} {
-    .ant-carousel .slick-prev,
-    .ant-carousel .slick-next {
-      top: 46%;
-      z-index: 20;
+    .ant-carousel,
+    .slick-slider,
+    .slick-list,
+    .slick-track,
+    .slick-slide,
+    .slick-slide > div {
+        height: 100% !important;
     }
 
-    .slick-arrow.slick-prev {
-      left: 3%;
+    .slick-slide {
+        overflow: hidden;
     }
 
-    .slick-arrow.slick-next {
-      right: 3%;
+    .slick-slide img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center;
     }
-  }
-
-  .slick-dots-bottom {
-    bottom: 15px;
 
     ${mediaQuery.minDesktop} {
-      bottom: 3rem;
-    }
-  }
+        .ant-carousel .slick-prev,
+        .ant-carousel .slick-next {
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+        }
 
-  .slick-dots {
-    display: none !important;
+        .slick-arrow.slick-prev {
+            left: 3%;
+        }
 
-    ${mediaQuery.minTablet} {
-      display: flex !important;
-      justify-content: center;
+        .slick-arrow.slick-next {
+            right: 3%;
+        }
     }
 
-    li,
-    li.slick-active {
-      width: 34px;
+    .slick-dots-bottom {
+        bottom: 12px;
+
+        ${mediaQuery.minDesktop} {
+            bottom: 1.5rem;
+        }
     }
 
-    li button {
-      width: 34px;
-      height: 5px;
+    .slick-dots {
+        display: none !important;
+
+        ${mediaQuery.minTablet} {
+            display: flex !important;
+            justify-content: center;
+        }
+
+        li,
+        li.slick-active {
+            width: 34px;
+        }
+
+        li button {
+            width: 34px;
+            height: 5px;
+        }
     }
-  }
 `;
