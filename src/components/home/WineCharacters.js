@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BannerLaVid, SvgHappyFace, SvgLessSymbol, SvgSun } from "../../images";
+import {SvgHappyFace, SvgLessSymbol, SvgSun} from "../../images";
 
 export const WineCharacters = () => {
   return (
@@ -23,14 +23,6 @@ export const WineCharacters = () => {
             title="Reserva un tiempo para compartir y celebrar"
             subTitle="con antelación y reservación con nuestro equipo."
           />
-        </div>
-      </div>
-
-      <div className="content-bottom">
-        <h2>Propiedades</h2>
-
-        <div className="item-image">
-          <img src={BannerLaVid} alt="Beneficios del vino" />
         </div>
       </div>
     </Container>

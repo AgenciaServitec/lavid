@@ -13,6 +13,8 @@ export { default as ImgUnidad3 } from "./others/unit-3.webp";
 export { default as ImgUnidad6 } from "./others/unit-6.webp";
 export { default as ImgBenefitsWine } from "./others/benefits-vino.webp";
 export { default as BannerLaVid } from "./others/banner-lavid.webp";
+export { default as BannerPartnerLaVid } from "./banner-partner.png";
+export { default as BannerPropertiesLaVid } from "./banner-properties.png";
 
 // -------SVG-------
 export * from "./svg/Phone";
