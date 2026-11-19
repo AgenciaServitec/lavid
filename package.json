@@ -16,7 +16,6 @@
     "deploy:web": "yarn turbo run build --filter=@web/lavid-life && firebase deploy --only hosting:web-site",
     "deploy:admin": "yarn turbo run build --filter=admin && firebase deploy --only hosting:admin-site",
     "deploy:indexes": "firebase deploy --only firestore:indexes",
-    "deploy:functions": "firebase deploy --only functions",
     "firebase:emulators": "firebase emulators:start"
   },
   "devDependencies": {

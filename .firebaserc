@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "la-vid-74267"
+  },
+  "targets": {
+    "la-vid-74267": {
+      "hosting": {
+        "web-site": [
+          "la-vid-74267"
+        ],
+        "admin-site": [
+          "admin-lavid"
+        ]
+      }
+    }
   }
 }

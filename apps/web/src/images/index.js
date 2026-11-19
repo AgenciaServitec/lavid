@@ -17,9 +17,9 @@ export { default as BannerPartnerLaVid } from "./banner-partner.png";
 export { default as BannerPropertiesLaVid } from "./banner-properties.png";
 
 // -------SVG-------
-export * from "./svg/Phone";
-export * from "./svg/Email";
-export * from "./svg/Location";
-export * from "./svg/Sun";
-export * from "./svg/HappyFace";
-export * from "./svg/LessSymbol";
+export * from "./svg/Phone.jsx";
+export * from "./svg/Email.jsx";
+export * from "./svg/Location.jsx";
+export * from "./svg/Sun.jsx";
+export * from "./svg/HappyFace.jsx";
+export * from "./svg/LessSymbol.jsx";

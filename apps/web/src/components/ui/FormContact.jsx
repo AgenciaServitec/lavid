@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import ModalAntd from "antd/lib/modal/Modal";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { Modal as ModalAntd } from "antd";
+import { mediaQuery } from "../../styles/constants/index.js";
 import Row from "antd/lib/row";
 import Col from "antd/lib/col";
 import { Controller, useForm } from "react-hook-form";

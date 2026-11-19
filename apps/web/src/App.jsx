@@ -7,8 +7,10 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./styles";
 import { setLocale } from "yup";
 import { currentConfig } from "./firebase";
-import ReactGA4 from "react-ga4";
+import ReactGA4Module from "react-ga4";
 import { useAnalyticsEventTracker } from "./hooks";
+
+const ReactGA4 = ReactGA4Module.default || ReactGA4Module;
 
 export const App = () => {
   const gaEventTrackerButtons = useAnalyticsEventTracker("Buttons");

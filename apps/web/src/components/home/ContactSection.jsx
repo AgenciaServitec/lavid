@@ -1,10 +1,8 @@
-import Row from "antd/lib/row";
-import Col from "antd/lib/col";
+import { Col, Row } from "antd";
 import { contactData } from "../../firebase";
 import { SvgEmail, SvgLocation, SvgPhone } from "../../images";
-import React from "react";
 import styled from "styled-components";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { mediaQuery } from "../../styles/constants/index.js";
 
 const ItemContact = ({
   svg = <SvgPhone width="80px" />,

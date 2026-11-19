@@ -1,7 +1,7 @@
 import React from "react";
-import DrawerAntd from "antd/lib/drawer";
+import { Drawer as DrawerAntd } from "antd";
 import styled from "styled-components";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
+import { mediaQuery } from "../../styles/constants/index.js";
 import { useNavigate } from "react-router";
 
 export const Drawer = ({ visibleDrawer, onSetVisibleDrawer }) => {

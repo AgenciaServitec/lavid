@@ -2,8 +2,8 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { capitalize, get, isEmpty, startCase, toString } from "lodash";
 import { classNames } from "../../../styles";
-import { keyframes } from "../../../styles/constants/keyframes";
-import Typography from "antd/lib/typography";
+import { keyframes } from "../../../styles/constants/index.js";
+import { Typography } from "antd";
 import { lighten, tint } from "polished";
 
 const { Text } = Typography;

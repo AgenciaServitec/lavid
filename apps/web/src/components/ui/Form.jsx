@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SpaceAntd from "antd/lib/space";
+import { Space as SpaceAntd } from "antd";
 
 // interface Props {
 //     onSubmit?: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
