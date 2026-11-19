@@ -15,13 +15,13 @@ export const HeaderDesktop = () => {
           <Link to="/" style={{ textDecoration: "none" }}>
             <li>INICIO</li>
           </Link>
-          <a href="/#services" style={{ textDecoration: "none" }}>
+          <a href="/apps/web/public#services" style={{ textDecoration: "none" }}>
             <li>PRODUCTO</li>
           </a>
           <Link to="/partners" style={{ textDecoration: "none" }}>
             <li className="partner-cta">PARTNERS</li>
           </Link>
-          <a href="/#contact" style={{ textDecoration: "none" }}>
+          <a href="/apps/web/public#contact" style={{ textDecoration: "none" }}>
             <li>CONTACTO</li>
           </a>
         </ul>

@@ -1,0 +1,8 @@
+node_modules
+dist
+build
+.turbo
+.firebase
+.yarn
+yarn.lock
+*.min.css
