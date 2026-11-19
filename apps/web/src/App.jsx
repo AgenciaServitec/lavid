@@ -4,11 +4,14 @@ import { Router } from "./router/index.jsx";
 import { yup } from "./config";
 import { GlobalStyles } from "./styles/themes/GlobalStyle";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./styles";
+import esES from "antd/locale/es_ES";
 import { setLocale } from "yup";
 import { currentConfig } from "./firebase";
 import ReactGA4Module from "react-ga4";
 import { useAnalyticsEventTracker } from "./hooks";
+import { ConfigProvider } from "antd";
+import { antdTheme } from "./styles/themes/antdTheme.js";
+import { theme } from "./styles/index.js";
 
 const ReactGA4 = ReactGA4Module.default || ReactGA4Module;
 
@@ -43,19 +46,21 @@ export const App = () => {
   const oneChangeMessageCustom = (message) => setMessageCustom(message);
 
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Router
-          onClickVisibleFormContact={onClickVisibleFormContact}
-          oneChangeMessageCustom={oneChangeMessageCustom}
-          messageCustom={messageCustom}
-          visibleFormContact={visibleFormContact}
-          onEventGaClickButton={eventGaClickButton}
-          onEventGaClickVideos={eventGaClickVideos}
-          onEventGaClickSuccessful={eventGaClickSuccessful}
-        />
-      </ThemeProvider>
-    </BrowserRouter>
+    <ConfigProvider theme={antdTheme} locale={esES}>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Router
+            onClickVisibleFormContact={onClickVisibleFormContact}
+            oneChangeMessageCustom={oneChangeMessageCustom}
+            messageCustom={messageCustom}
+            visibleFormContact={visibleFormContact}
+            onEventGaClickButton={eventGaClickButton}
+            onEventGaClickVideos={eventGaClickVideos}
+            onEventGaClickSuccessful={eventGaClickSuccessful}
+          />
+        </ThemeProvider>
+      </BrowserRouter>
+    </ConfigProvider>
   );
 };
