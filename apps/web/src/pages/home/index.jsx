@@ -109,7 +109,9 @@ const PartnerBannerLink = styled.a`
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(15, 25, 32, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 
   &:hover {
     transform: translateY(-2px);

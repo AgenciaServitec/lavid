@@ -94,8 +94,8 @@ const Container = styled.div`
         error
           ? theme.colors.error
           : disabled
-          ? theme.bg.border
-          : lighten(0.1, theme.colors.primary)
+            ? theme.bg.border
+            : lighten(0.1, theme.colors.primary)
       };}
 
     .item-label,
@@ -104,8 +104,8 @@ const Container = styled.div`
         error
           ? theme.colors.error
           : disabled
-          ? theme.color.body
-          : lighten(0.1, theme.colors.primary)
+            ? theme.color.body
+            : lighten(0.1, theme.colors.primary)
       };
     }
   }
@@ -171,8 +171,8 @@ const Container = styled.div`
           error
             ? theme.colors.error
             : disabled
-            ? theme.colors.body
-            : lighten(0.1, theme.colors.primary)
+              ? theme.colors.body
+              : lighten(0.1, theme.colors.primary)
         };
       }
 

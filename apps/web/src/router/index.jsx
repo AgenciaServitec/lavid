@@ -1,6 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import { BaseLayout } from "../components";
-import {Home, Page404, ContactSuccess, Contact, DistributorPage} from "../pages";
+import {
+  Home,
+  Page404,
+  ContactSuccess,
+  Contact,
+  DistributorPage,
+} from "../pages";
 
 export const Router = ({
   onClickVisibleFormContact,
@@ -50,7 +56,7 @@ export const Router = ({
           </BaseLayout>
         }
       />
-        <Route
+      <Route
         exact
         path="/partners"
         element={

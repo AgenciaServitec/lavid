@@ -154,7 +154,9 @@ const Container = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        transition: border-color 0.25s ease, transform 0.25s ease;
+        transition:
+          border-color 0.25s ease,
+          transform 0.25s ease;
 
         &:hover {
           border-color: #bf1f6a;

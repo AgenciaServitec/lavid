@@ -2,141 +2,149 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 export const HeroContactForm = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        phone: "",
-        email: "",
-        message: "",
-    });
-    const [status, setStatus] = useState("idle"); // idle, loading, success, error
-    const [errorMessage, setErrorMessage] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle"); // idle, loading, success, error
+  const [errorMessage, setErrorMessage] = useState("");
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMessage("");
+
+    const entryPayload = {
+      category: "contact",
+      hostname: "lavid.life",
+      message: formData.message,
+      client: {
+        fullName: formData.name,
+        email: formData.email,
+        phone: {
+          prefix: "+51",
+          number: formData.phone,
+        },
+        document: {
+          type: "DNI",
+          number: "",
+        },
+      },
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setStatus("loading");
-        setErrorMessage("");
-
-        const entryPayload = {
-            category: "contact",
-            hostname: "lavid.life",
-            message: formData.message,
-            client: {
-                fullName: formData.name,
-                email: formData.email,
-                phone: {
-                    prefix: "+51",
-                    number: formData.phone,
-                },
-                document: {
-                    type: "DNI",
-                    number: "",
-                },
-            },
-        };
-
-        try {
-            const response = await fetch("https://api-servitec-peru.web.app/entries/contact", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(entryPayload),
-            });
-
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.error || "Error al enviar el mensaje");
-            }
-
-            setStatus("success");
-            setFormData({ name: "", phone: "", email: "", message: "" });
-        } catch (error) {
-            console.error("Error detallado:", error);
-            setErrorMessage(error.message || "Hubo un problema al enviar el mensaje.");
-            setStatus("error");
+    try {
+      const response = await fetch(
+        "https://api-servitec-peru.web.app/entries/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(entryPayload),
         }
-    };
+      );
 
-    if (status === "success") {
-        return (
-            <FormWrapper>
-                <SuccessMessage>
-                    <div className="icon">✓</div>
-                    <h3>¡Solicitud Enviada!</h3>
-                    <p>Hemos recibido sus datos correctamente. Nuestro equipo se pondrá en contacto a la brevedad.</p>
-                    <button onClick={() => setStatus("idle")}>Enviar otro mensaje</button>
-                </SuccessMessage>
-            </FormWrapper>
-        );
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Error al enviar el mensaje");
+      }
+
+      setStatus("success");
+      setFormData({ name: "", phone: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Error detallado:", error);
+      setErrorMessage(
+        error.message || "Hubo un problema al enviar el mensaje."
+      );
+      setStatus("error");
     }
+  };
 
+  if (status === "success") {
     return (
-        <FormWrapper>
-            <h3>Consulte aqui.</h3>
-            <p>Estamos listos para atender sus desafíos.</p>
-
-            <form onSubmit={handleSubmit}>
-                <div className="input-group">
-                    <label>Nombre Completo</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        placeholder="Nombre y Apellidos"
-                    />
-                </div>
-
-                <div className="input-group">
-                    <label>Nro. Teléfono</label>
-                    <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        placeholder="999 999 999"
-                    />
-                </div>
-
-                <div className="input-group">
-                    <label>Correo Electrónico</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        placeholder="ejemplo@correo.com"
-                    />
-                </div>
-
-                <div className="input-group">
-                    <label>Detalles del Requerimiento</label>
-                    <textarea
-                        name="message"
-                        rows="3"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        placeholder="Describa brevemente su consulta..."
-                    ></textarea>
-                </div>
-
-                {status === "error" && <ErrorText>{errorMessage}</ErrorText>}
-
-                <SubmitButton type="submit" disabled={status === "loading"}>
-                    {status === "loading" ? "Enviando..." : "Enviar Solicitud"}
-                </SubmitButton>
-            </form>
-        </FormWrapper>
+      <FormWrapper>
+        <SuccessMessage>
+          <div className="icon">✓</div>
+          <h3>¡Solicitud Enviada!</h3>
+          <p>
+            Hemos recibido sus datos correctamente. Nuestro equipo se pondrá en
+            contacto a la brevedad.
+          </p>
+          <button onClick={() => setStatus("idle")}>Enviar otro mensaje</button>
+        </SuccessMessage>
+      </FormWrapper>
     );
+  }
+
+  return (
+    <FormWrapper>
+      <h3>Consulte aqui.</h3>
+      <p>Estamos listos para atender sus desafíos.</p>
+
+      <form onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label>Nombre Completo</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            placeholder="Nombre y Apellidos"
+          />
+        </div>
+
+        <div className="input-group">
+          <label>Nro. Teléfono</label>
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+            placeholder="999 999 999"
+          />
+        </div>
+
+        <div className="input-group">
+          <label>Correo Electrónico</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            placeholder="ejemplo@correo.com"
+          />
+        </div>
+
+        <div className="input-group">
+          <label>Detalles del Requerimiento</label>
+          <textarea
+            name="message"
+            rows="3"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            placeholder="Describa brevemente su consulta..."
+          ></textarea>
+        </div>
+
+        {status === "error" && <ErrorText>{errorMessage}</ErrorText>}
+
+        <SubmitButton type="submit" disabled={status === "loading"}>
+          {status === "loading" ? "Enviando..." : "Enviar Solicitud"}
+        </SubmitButton>
+      </form>
+    </FormWrapper>
+  );
 };
 
 const FormWrapper = styled.div`
@@ -156,7 +164,7 @@ const FormWrapper = styled.div`
     margin-bottom: 0.5rem;
     font-weight: 600;
   }
-  
+
   p {
     color: #4a5568;
     margin-bottom: 2rem;
@@ -164,7 +172,7 @@ const FormWrapper = styled.div`
 
   .input-group {
     margin-bottom: 1.5rem;
-    
+
     label {
       display: block;
       font-size: 0.75rem;
@@ -175,7 +183,8 @@ const FormWrapper = styled.div`
       margin-bottom: 0.5rem;
     }
 
-    input, textarea {
+    input,
+    textarea {
       width: 100%;
       background: transparent;
       border: none;
@@ -213,7 +222,7 @@ const SubmitButton = styled.button`
     opacity: 0.7;
     cursor: not-allowed;
   }
-  
+
   &:hover:not(:disabled) {
     opacity: 0.9;
   }
@@ -221,7 +230,7 @@ const SubmitButton = styled.button`
 
 const SuccessMessage = styled.div`
   text-align: center;
-  
+
   .icon {
     width: 60px;
     height: 60px;
@@ -235,8 +244,10 @@ const SuccessMessage = styled.div`
     margin: 0 auto 1.5rem;
   }
 
-  h3 { margin-bottom: 1rem; }
-  
+  h3 {
+    margin-bottom: 1rem;
+  }
+
   button {
     margin-top: 2rem;
     padding: 0.75rem 1.5rem;

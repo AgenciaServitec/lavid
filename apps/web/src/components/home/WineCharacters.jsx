@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {SvgHappyFace, SvgLessSymbol, SvgSun} from "../../images";
+import { SvgHappyFace, SvgLessSymbol, SvgSun } from "../../images";
 
 export const WineCharacters = () => {
   return (

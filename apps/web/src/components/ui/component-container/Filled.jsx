@@ -92,8 +92,8 @@ const Container = styled.div`
       error
         ? theme.colors.error
         : disabled
-        ? theme.colors.gray
-        : lighten(0.1, theme.colors.primary)
+          ? theme.colors.gray
+          : lighten(0.1, theme.colors.primary)
     };}
 
     .item-label,
@@ -102,8 +102,8 @@ const Container = styled.div`
         error
           ? theme.colors.error
           : disabled
-          ? theme.colors.gray
-          : lighten(0.1, theme.colors.primary)
+            ? theme.colors.gray
+            : lighten(0.1, theme.colors.primary)
       };
     }
   }
@@ -169,8 +169,8 @@ const Container = styled.div`
         error
           ? theme.colors.error
           : disabled
-          ? theme.colors.body
-          : lighten(0.1, theme.colors.primary)
+            ? theme.colors.body
+            : lighten(0.1, theme.colors.primary)
       };
     }
     
@@ -234,9 +234,11 @@ const Error = styled(Text)`
   ${({ error, theme }) => css`
     color: ${theme.colors.error};
     font-size: 0.7rem;
-    ${error &&
-    css`
-      animation: ${keyframes.shake} 340ms;
-    `};
+    ${
+      error &&
+      css`
+        animation: ${keyframes.shake} 340ms;
+      `
+    };
   `}
 `;

@@ -15,7 +15,10 @@ export const HeaderDesktop = () => {
           <Link to="/" style={{ textDecoration: "none" }}>
             <li>INICIO</li>
           </Link>
-          <a href="/apps/web/public#services" style={{ textDecoration: "none" }}>
+          <a
+            href="/apps/web/public#services"
+            style={{ textDecoration: "none" }}
+          >
             <li>PRODUCTO</li>
           </a>
           <Link to="/partners" style={{ textDecoration: "none" }}>

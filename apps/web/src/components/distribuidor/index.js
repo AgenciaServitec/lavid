@@ -1,1 +1,1 @@
-export * from "./DistributorForm"
+export * from "./DistributorForm";
