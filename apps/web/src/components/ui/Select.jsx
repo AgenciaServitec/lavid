@@ -2,7 +2,7 @@ import React from "react";
 import AntSelect from "antd/lib/select";
 import { ComponentContainer } from "./component-container";
 import { defaultTo } from "lodash";
-import { SelectOption } from "./SelectOption";
+import { SelectOption } from "./SelectOption.jsx";
 import { lighten } from "polished";
 import styled, { css } from "styled-components";
 
@@ -114,9 +114,9 @@ const StyledSelectMobile = styled.select`
     border: none;
     margin: 0 11px 4px 11px;
     font-size: 1rem;
-    background-color: ${error
-      ? lighten(0.4, theme.colors.error)
-      : "transparent"};
+    background-color: ${
+      error ? lighten(0.4, theme.colors.error) : "transparent"
+    };
     cursor: text;
     border-radius: ${theme.border_radius.xx_small};
     color: ${placeholder && !value ? theme.colors.black60 : theme.colors.font1};

@@ -4,11 +4,11 @@ import { ImgLogoLavid2 } from "../../images";
 import { useDevice } from "../../hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Drawer } from "./Drawer";
-import { Footer } from "./Footer";
+import { Drawer } from "./Drawer.jsx";
+import { Footer } from "./Footer.jsx";
 import { ButtonsFloating, WrapperComponent } from "../ui";
 import { useNavigate } from "react-router";
-import { HeaderDesktop } from "./HeaderDesktop";
+import { HeaderDesktop } from "./HeaderDesktop.jsx";
 
 export const BaseLayout = ({ children, onClickVisibleFormContact }) => {
   const { isMobile } = useDevice();

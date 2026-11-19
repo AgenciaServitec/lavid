@@ -1,3 +1,3 @@
-export * from "./layout/BaseLayout";
+export * from "./layout/BaseLayout.jsx";
 export * from "./home";
 export * from "./distribuidor";

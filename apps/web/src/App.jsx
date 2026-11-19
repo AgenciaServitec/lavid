@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { Router } from "./router";
+import { Router } from "./router/index.jsx";
 import { yup } from "./config";
 import { GlobalStyles } from "./styles/themes/GlobalStyle";
 import { ThemeProvider } from "styled-components";

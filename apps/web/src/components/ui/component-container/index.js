@@ -1,5 +1,5 @@
 // import { Group } from "./Group";
-import { Outlined } from "./Outlined";
-import { Filled } from "./Filled";
+import { Outlined } from "./Outlined.jsx";
+import { Filled } from "./Filled.jsx";
 
 export const ComponentContainer = { outlined: Outlined, filled: Filled };

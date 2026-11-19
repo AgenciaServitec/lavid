@@ -1,23 +1,23 @@
-import React, {useEffect, useState} from "react";
-import styled, {css} from "styled-components";
+import React, { useEffect, useState } from "react";
+import styled, { css } from "styled-components";
 import ModalAntd from "antd/lib/modal/Modal";
-import {mediaQuery} from "../../styles/constants/mediaQuery";
+import { mediaQuery } from "../../styles/constants/mediaQuery";
 import Row from "antd/lib/row";
 import Col from "antd/lib/col";
-import {Controller, useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import {useDevice, useFormUtils} from "../../hooks";
-import {Input} from "./Input";
-import {Form} from "./Form";
-import {defaultTo} from "lodash";
-import {phoneCodes} from "../../data-list";
-import {Select} from "./Select";
-import {InputNumber} from "./InputNumber";
-import {TextArea} from "./TextArea";
-import {notification} from "./notification";
-import {useNavigate} from "react-router";
-import {Button} from "./Button";
+import { useDevice, useFormUtils } from "../../hooks";
+import { Input } from "./Input.jsx";
+import { Form } from "./Form.jsx";
+import { defaultTo } from "lodash";
+import { phoneCodes } from "../../data-list";
+import { Select } from "./Select.jsx";
+import { InputNumber } from "./InputNumber.jsx";
+import { TextArea } from "./TextArea.jsx";
+import { notification } from "./notification.jsx";
+import { useNavigate } from "react-router";
+import { Button } from "./Button.jsx";
 
 export const FormContact = ({
   visibleFormContact,
@@ -49,9 +49,9 @@ export const FormContact = ({
     resolver: yupResolver(schema),
   });
 
-    useEffect(() => {
-        setValue("message", messageCustom);
-    }, [messageCustom,setValue]);
+  useEffect(() => {
+    setValue("message", messageCustom);
+  }, [messageCustom, setValue]);
 
   const { required, error } = useFormUtils({ errors, schema });
 
