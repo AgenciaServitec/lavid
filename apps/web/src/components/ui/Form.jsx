@@ -1,21 +1,31 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Space as SpaceAntd } from "antd";
 
-// interface Props {
-//     onSubmit?: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
-//     children?: React.ReactNode;
-// }
-
-export const Form = ({ children, ...props }) => (
-  <form noValidate autoComplete="off" {...props}>
-    <SpaceStyled size="large" direction="vertical">
+export const Form = ({
+  children,
+  size = "large",
+  marginTop = "1rem",
+  ...props
+}) => (
+  <FormStyled noValidate autoComplete="off" {...props}>
+    <SpaceStyled size={size} direction="vertical" $marginTop={marginTop}>
       {children}
     </SpaceStyled>
-  </form>
+  </FormStyled>
 );
 
-const SpaceStyled = styled(SpaceAntd)`
+const FormStyled = styled.form`
   width: 100%;
-  margin-top: 1rem;
+`;
+
+const SpaceStyled = styled(SpaceAntd)`
+  ${({ $marginTop }) => css`
+    width: 100%;
+    margin-top: ${$marginTop};
+
+    .ant-space-item {
+      width: 100%;
+    }
+  `}
 `;

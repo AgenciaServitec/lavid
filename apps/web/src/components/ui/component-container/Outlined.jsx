@@ -1,244 +1,236 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { capitalize, get, isEmpty, startCase, toString } from "lodash";
+import { Typography } from "antd";
+import { lighten, rgba } from "polished";
 import { classNames } from "../../../styles";
 import { keyframes } from "../../../styles/constants/index.js";
-import { Typography } from "antd";
-import { lighten, tint } from "polished";
 
 const { Text } = Typography;
 
-// interface Props {
-//   value?: string | number | boolean | Record<string, unknown> | Moment;
-//   required?: boolean;
-//   hidden?: boolean;
-//   error?: FormError;
-//   label?: string;
-//   disabled?: boolean;
-//   componentId?: string;
-//   children?: React.ReactNode;
-//   animation?: boolean;
-// }
-
 export const Outlined = ({
   value,
-  required,
+  required = false,
   error,
   hidden = false,
   label,
   children,
   componentId,
-  animation,
+  animation = false,
   disabled = false,
   bgColor,
-}) => (
-  <>
-    <Container
-      value={typeof value === "object" ? !isEmpty(value) : !!toString(value)}
-      error={error}
-      required={required}
-      hidden={hidden}
-      animation={animation}
-      className={classNames({ "scroll-error-anchor": error })}
-      disabled={disabled}
-      bgColor={bgColor}
-    >
-      <div className="item-wrapper">{children}</div>
-      <label htmlFor={componentId} className="item-label">
-        {label}
-      </label>
-    </Container>
-    {error && (
-      <Error error={error}>
-        {capitalize(startCase(get(error, "message")))}
-      </Error>
-    )}
-  </>
-);
+}) => {
+  const hasValue =
+    typeof value === "object" ? !isEmpty(value) : !!toString(value);
+
+  return (
+    <>
+      <Container
+        $hasValue={hasValue}
+        $error={!!error}
+        $required={required}
+        $hidden={hidden}
+        $animation={animation}
+        $disabled={disabled}
+        $bgColor={bgColor}
+        className={classNames({ "scroll-error-anchor": error })}
+      >
+        <div className="item-wrapper">{children}</div>
+        <label htmlFor={componentId} className="item-label">
+          {label}
+        </label>
+      </Container>
+      {error && (
+        <ErrorText $error={!!error}>
+          {capitalize(startCase(get(error, "message")))}
+        </ErrorText>
+      )}
+    </>
+  );
+};
 
 const labelAnimate = css`
-  padding: 0 5px;
-  border-radius: 0.7rem;
-  top: -11px;
-  left: 6px;
+  top: -10px;
+  left: 10px;
   bottom: auto;
-  font-weight: 600;
-  font-size: 0.7rem;
-  background-color: ${({ theme }) => theme.colors.tertiary};
+  padding: 0 5px;
+  border-radius: 4px;
+  font-weight: ${({ theme }) => theme.font_weight.large};
+  font-size: 0.72rem;
+  line-height: 1.2;
 `;
 
 const Container = styled.div`
   ${({
     theme,
-    error,
-    required,
-    disabled,
-    value,
-    animation,
-    hidden,
-    bgColor,
-  }) => css`
-    position: relative;
-    width: inherit;
-    background: ${bgColor ? bgColor : theme.colors.tertiary};
-    border: 1px solid ${
-      error ? theme.colors.error : theme.colors.gray
-    } !important;
-    border-radius: 7rem;
-    animation: ${error && keyframes.shake} 340ms
-      cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    $error,
+    $required,
+    $disabled,
+    $hasValue,
+    $animation,
+    $hidden,
+    $bgColor,
+  }) => {
+    const activeColor = $error
+      ? theme.colors.error
+      : lighten(0.1, theme.colors.primary);
 
-    &:hover,
-    &:focus-within {
-      border-color: ${
-        error
-          ? theme.colors.error
-          : disabled
-            ? theme.bg.border
-            : lighten(0.1, theme.colors.primary)
-      };}
+    const surfaceBg = $disabled
+      ? theme.colors.light
+      : $bgColor || theme.colors.tertiary;
 
-    .item-label,
-    .item-label:after {
-      color: ${
-        error
-          ? theme.colors.error
-          : disabled
-            ? theme.color.body
-            : lighten(0.1, theme.colors.primary)
-      };
-    }
-  }
-
-  &:focus-within {
-    ${
-      error
-        ? css`
-            border-color: ${theme.colors.error};
-            box-shadow: 0 0 0 2px ${tint(0.85, theme.colors.error)};
-          `
-        : css`
-            border-color: ${lighten(0.1, theme.colors.primary)};
-            box-shadow: 0 0 0 2px ${tint(0.85, theme.colors.primary)};
-          `
-    }
-  }
-
-    .item-label {
-      position: absolute;
-      top: 0;
-      left: 10px;
-      bottom: 0;
-      z-index: 100;
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      background-color: transparent;
-      color: ${error ? theme.colors.error : theme.colors.body};
-      font-size: ${theme.font_sizes.small};
-      transition: all ease-in-out 150ms, opacity 150ms;
-
-      ${
-        hidden &&
-        css`
-          display: none;
-        `
-      }
-
-      ${animation && labelAnimate};
-
-      ${value && labelAnimate};
-
-      ${
-        required &&
-        css`
-          ::after {
-            display: inline-block;
-            margin-left: 0.2rem;
-            color: ${error ? theme.colors.error : theme.colors.body};
-            font-size: ${({ theme }) => theme.font_sizes.small};
-            line-height: 1;
-            content: "*";
-          }
-        `
-      }
-    }
-
-    .item-wrapper {
-      &:hover + .item-label,
-      &:hover + .item-label:after {
-        color: ${
-          error
+    return css`
+      position: relative;
+      width: 100%;
+      background-color: ${surfaceBg};
+      border: 1.5px solid
+        ${
+          $error
             ? theme.colors.error
-            : disabled
-              ? theme.colors.body
-              : lighten(0.1, theme.colors.primary)
+            : $disabled
+              ? theme.colors.light
+              : theme.colors.gray
         };
+      border-radius: 10px;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+
+      ${
+        $error &&
+        css`
+          animation: ${keyframes.shake} 340ms
+            cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        `
       }
 
-      &:focus-within + .item-label,
-      &:-webkit-autofill + .item-label {
-        ${labelAnimate};
+      /* Estado Hover */
+      &:hover:not(:focus-within) {
+        border-color: ${$disabled ? theme.colors.light : activeColor};
 
+        .item-label,
+        .item-label::after {
+          color: ${$disabled ? theme.colors.font3 : activeColor};
+        }
+      }
+
+      &:focus-within,
+      &:has(input:not(:placeholder-shown)),
+      &:has(textarea:not(:placeholder-shown)) {
+        .item-label,
+        .item-label::after {
+          ${labelAnimate};
+          background-color: ${surfaceBg};
+        }
+      }
+
+      &:focus-within {
+        border-color: ${activeColor};
+        box-shadow: 0 0 0 3px
+          ${rgba($error ? theme.colors.error : theme.colors.primary, 0.15)};
+
+        .item-label,
+        .item-label::after {
+          color: ${activeColor};
+        }
+      }
+
+      .item-label {
+        position: absolute;
+        top: 0;
+        left: 11px;
+        bottom: 0;
+        z-index: 10;
+        pointer-events: none;
+        display: ${$hidden ? "none" : "flex"};
+        align-items: center;
+        background-color: transparent;
         color: ${
-          error ? theme.colors.error : lighten(0.1, theme.colors.primary)
+          $error
+            ? theme.colors.error
+            : $disabled
+              ? theme.colors.font3
+              : theme.colors.quaternary
         };
+        font-size: ${theme.font_sizes.small};
+        font-weight: ${theme.font_weight.small};
+        transition:
+          top 0.15s ease,
+          font-size 0.15s ease,
+          color 0.15s ease,
+          background-color 0.15s ease;
 
         ${
-          error &&
+          ($animation || $hasValue) &&
           css`
-            color: ${theme.colors.error};
+            ${labelAnimate};
+            background-color: ${surfaceBg};
+            color: ${$error ? theme.colors.error : theme.colors.quaternary};
           `
         }
-        &:after {
-          color: ${
-            error ? theme.colors.error : lighten(0.1, theme.colors.primary)
-          };
-        }
-      }
 
-      input:-webkit-autofill {
-        -webkit-text-fill-color: #fff;
         ${
-          value &&
+          $required &&
           css`
-            -webkit-text-fill-color: ${({ theme }) => theme.colors.primary};
+            &::after {
+              display: inline-block;
+              margin-left: 0.2rem;
+              color: ${theme.colors.error};
+              font-size: inherit;
+              line-height: 1;
+              content: "*";
+            }
           `
-        };
-
-        &:focus {
-          -webkit-text-fill-color: ${({ theme }) => theme.colors.primary};
         }
       }
 
-      //Styles default
-      .ant-input-number,
-      .ant-picker,
-      .ant-select {
-        width: 100%;
-        box-shadow: none;
-        outline: none;
-      }
+      .item-wrapper {
+        border-radius: 10px;
+        overflow: hidden;
 
-      .ant-input-affix-wrapper,
-      .ant-input {
-        box-shadow: none;
-      }
+        input:-webkit-autofill {
+          -webkit-text-fill-color: ${theme.colors.primary};
+          transition: background-color 5000s ease-in-out 0s;
+        }
 
-      .ant-input-group-addon {
-        border: 0 solid #d9d9d9;
-        border-left: 1px solid #d9d9d9;
+        .ant-input-number,
+        .ant-picker,
+        .ant-select,
+        .ant-select-selector,
+        .ant-input-affix-wrapper,
+        .ant-input {
+          width: 100%;
+          border: none !important;
+          background: transparent !important;
+          box-shadow: none !important;
+          outline: none !important;
+        }
+
+        .ant-input-group-addon {
+          border: 0 solid ${theme.colors.light};
+          border-left: 1px solid ${theme.colors.light};
+          background: transparent;
+        }
       }
-    }
-  `}
+    `;
+  }}
 `;
 
-const Error = styled(Text)`
-  color: ${({ theme }) => theme.colors.error};
-  font-size: 0.7rem;
-  ${({ error }) =>
-    error &&
-    css`
-      animation: ${keyframes.shake} 340ms;
-    `};
+const ErrorText = styled(Text)`
+  ${({ $error, theme }) => css`
+    display: block;
+    margin-top: 0.25rem;
+    padding-left: 0.25rem;
+    color: ${theme.colors.error};
+    font-size: 0.75rem;
+    font-weight: ${theme.font_weight.medium};
+
+    ${
+      $error &&
+      css`
+        animation: ${keyframes.shake} 340ms;
+      `
+    }
+  `}
 `;

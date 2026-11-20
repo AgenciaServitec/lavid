@@ -1,5 +1,5 @@
 import React from "react";
-import InputNumberAntd from "antd/lib/input-number";
+import { InputNumber as InputNumberAntd } from "antd";
 import { ComponentContainer } from "./component-container";
 
 export const InputNumber = ({
@@ -10,11 +10,16 @@ export const InputNumber = ({
   error,
   label,
   variant = "outlined",
-  disabled,
+  disabled = false,
   animation,
+  bgColor,
+  componentId,
+  inputMode = "decimal",
+  style,
   ...props
 }) => {
-  const Container = ComponentContainer[variant];
+  const Container = ComponentContainer[variant] || ComponentContainer.outlined;
+  const inputId = componentId || props.id;
 
   return (
     <Container
@@ -25,16 +30,23 @@ export const InputNumber = ({
       label={label}
       disabled={disabled}
       animation={animation}
+      bgColor={bgColor}
+      componentId={inputId}
     >
       <InputNumberAntd
+        id={inputId}
         bordered={false}
-        placeholder=""
-        type="number"
+        placeholder=" "
+        inputMode={inputMode}
         autoComplete="chrome-off"
         size={isMobile ? "middle" : "large"}
         value={value}
         disabled={disabled}
-        allowClear={!disabled}
+        style={
+          variant === "filled"
+            ? { paddingTop: "14px", paddingBottom: "2px", ...style }
+            : style
+        }
         {...props}
       />
     </Container>

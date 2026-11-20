@@ -1,16 +1,6 @@
 import React from "react";
-import InputAntd from "antd/lib/input";
+import { Input as InputAntd } from "antd";
 import { ComponentContainer } from "./component-container";
-
-// interface Props {
-//   value?: string;
-//   required?: boolean;
-//   hidden?: boolean;
-//   error?: FormError;
-//   label?: string;
-//   variant?: "outlined" | "filled";
-//   disabled?: boolean;
-// }
 
 export const Input = ({
   value,
@@ -20,12 +10,15 @@ export const Input = ({
   error,
   label,
   variant = "outlined",
-  disabled,
+  disabled = false,
   animation,
   bgColor,
+  componentId,
+  style,
   ...props
 }) => {
-  const Container = ComponentContainer[variant];
+  const Container = ComponentContainer[variant] || ComponentContainer.outlined;
+  const inputId = componentId || props.id;
 
   return (
     <Container
@@ -37,8 +30,10 @@ export const Input = ({
       disabled={disabled}
       animation={animation}
       bgColor={bgColor}
+      componentId={inputId}
     >
       <InputAntd
+        id={inputId}
         bordered={false}
         autoComplete="chrome-off"
         size={isMobile ? "middle" : "large"}
@@ -46,6 +41,11 @@ export const Input = ({
         value={value}
         disabled={disabled}
         allowClear={!disabled}
+        style={
+          variant === "filled"
+            ? { paddingTop: "14px", paddingBottom: "2px", ...style }
+            : style
+        }
         {...props}
       />
     </Container>

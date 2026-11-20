@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { ImgUnidad1, ImgUnidad3, ImgUnidad6 } from "../../images";
-import { mediaQuery } from "../../styles/constants/mediaQuery";
 import { Button } from "../ui";
 
 export const Services = ({
@@ -120,15 +119,8 @@ const Container = styled.div`
   height: auto;
   background: #fff;
   padding: 1rem;
-  ${mediaQuery.minTablet} {
-    padding: 1rem 3rem;
-  }
 
   .content-items {
-    padding: 3rem 0;
-    max-width: 1140px;
-    margin: 0 auto;
-
     .title {
       color: #bf1f6a;
       font-weight: 700;

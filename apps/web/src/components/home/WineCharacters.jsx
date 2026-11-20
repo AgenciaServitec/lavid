@@ -1,12 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { SvgHappyFace, SvgLessSymbol, SvgSun } from "../../images";
+import { mediaQuery } from "../../styles/constants/index.js";
 
 export const WineCharacters = () => {
   return (
     <Container>
       <div className="content-top">
-        <div className="line-horizontal"></div>
-
         <div className="list-characters">
           <ItemCharacter
             component={<SvgSun />}
@@ -32,7 +31,7 @@ export const WineCharacters = () => {
 const ItemCharacter = ({ component, title, subTitle }) => {
   return (
     <div className="item-character">
-      {component}
+      <div className="item-icon">{component}</div>
       <h2>{title}</h2>
       <p>{subTitle}</p>
     </div>
@@ -40,58 +39,75 @@ const ItemCharacter = ({ component, title, subTitle }) => {
 };
 
 const Container = styled.section`
-  margin: 1.5em auto;
+  ${({ theme }) => css`
+    width: 100%;
+    padding: 1rem 1.5rem 2.5rem;
 
-  .content-top {
-    .line-horizontal {
-      margin: 2em auto 2.5em auto;
-      width: 90%;
-      max-width: 45em;
-      height: 2px;
-      background: #000;
-    }
-    .list-characters {
-      margin: 1em 1.5em;
-      display: flex;
-      gap: 1.5em;
-      flex-wrap: wrap;
-      justify-content: center;
+    .content-top {
+      max-width: 1120px;
+      margin: 0 auto;
 
-      .item-character {
+      .line-horizontal {
+        margin: 1.5rem auto 3rem;
         width: 100%;
-        max-width: 20em;
-        padding: 1em 0.5em;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        h2 {
-          margin-top: 1em;
-          text-align: center;
+        max-width: 42rem;
+        height: 2px;
+        background-color: ${theme.colors.primary};
+      }
+
+      .list-characters {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        align-items: start;
+
+        ${mediaQuery.minTablet} {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2.5rem;
         }
-        p {
+
+        .item-character {
+          width: 100%;
+          max-width: 21rem;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           text-align: center;
+
+          .item-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4.25rem;
+            height: 4.25rem;
+            margin-bottom: 1.25rem;
+
+            svg {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+
+          h2 {
+            margin: 0 0 0.65rem;
+            color: ${theme.colors.primary};
+            font-size: 1.25rem;
+            font-weight: ${theme.font_weight.large};
+            line-height: 1.3;
+          }
+
+          p {
+            margin: 0;
+            color: ${theme.colors.quaternary};
+            font-size: 0.98rem;
+            font-weight: ${theme.font_weight.small};
+            line-height: 1.55;
+            max-width: 28ch;
+          }
         }
       }
     }
-  }
-
-  .content-bottom {
-    margin: 2em auto;
-    h2 {
-      text-align: center;
-      font-size: 2.3em;
-      text-transform: uppercase;
-      text-decoration: underline;
-      font-weight: 700;
-    }
-    .item-image {
-      display: flex;
-      justify-content: center;
-      img {
-        max-width: 45em;
-        width: 100%;
-      }
-    }
-  }
+  `}
 `;

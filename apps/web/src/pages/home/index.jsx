@@ -33,23 +33,26 @@ export const Home = ({
             onEventGaClickButton={onEventGaClickButton}
             oneChangeMessageCustom={oneChangeMessageCustom}
           />
+        </WrapperComponent>
+
+        <WrapperComponent>
           <WineCharacters />
         </WrapperComponent>
 
-        <BannerWrapper>
+        <WrapperComponent>
           <PropertiesBannerCard>
             <img
               src={BannerPropertiesLaVid}
               alt="Banner de sus propiedades del vino La Vid"
             />
           </PropertiesBannerCard>
-        </BannerWrapper>
+        </WrapperComponent>
 
-        <BannerWrapper>
+        <WrapperComponent>
           <PartnerBannerLink href="/partners">
             <img src={BannerPartnerLaVid} alt="Banner de Partners" />
           </PartnerBannerLink>
-        </BannerWrapper>
+        </WrapperComponent>
 
         <ContactSection />
       </Container>
@@ -74,7 +77,6 @@ const Container = styled.div`
 
 const BannerWrapper = styled.div`
   width: 100%;
-  max-width: 1267px;
   margin: 2rem auto 0;
   padding: 0 1.5rem;
   box-sizing: border-box;
