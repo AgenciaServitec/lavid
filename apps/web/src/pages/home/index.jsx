@@ -10,13 +10,9 @@ import {
 } from "../../components";
 import { FormContact, WrapperComponent } from "../../components/ui";
 import { useAnalyticsEventTracker } from "../../hooks";
-import {
-  BannerPartnerLaVid,
-  BannerPartnerMovilLaVid,
-  BannerPropertiesLaVid,
-  BannerPropertiesMovilLaVid,
-} from "../../images";
+import { BannerPartnerLaVid, BannerPartnerMovilLaVid } from "../../images";
 import { mediaQuery } from "../../styles/constants/index.js";
+import { Benefits } from "../../components/home/Benefits.jsx";
 
 export const Home = ({
   onClickVisibleFormContact,
@@ -49,7 +45,9 @@ export const Home = ({
           </WrapperComponent>
 
           <WrapperComponent>
-            <BannerSection id="benefits">
+            <Benefits id="benefits" />
+
+            {/*<BannerSection >
               <SectionHeader>
                 <h2>Beneficios en cada copa</h2>
                 <p>
@@ -71,7 +69,7 @@ export const Home = ({
                   />
                 </picture>
               </PropertiesBannerCard>
-            </BannerSection>
+            // </BannerSection>*/}
           </WrapperComponent>
 
           <WrapperComponent>

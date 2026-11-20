@@ -19,6 +19,7 @@ export { default as BannerPartnerLaVid } from "./banner-partner.png";
 export { default as BannerPartnerMovilLaVid } from "./banner-partner-movil.png";
 export { default as BannerPropertiesLaVid } from "./banner-properties.png";
 export { default as BannerPropertiesMovilLaVid } from "./banner-properties-movil.png";
+export { default as imgbotellabeneficios } from "./botella-beneficios.png";
 export { default as imagennueva } from "./banner-properties-movil.png";
 
 // -------SVG-------
