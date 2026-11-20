@@ -5,9 +5,7 @@ import { Carousel } from "./Carousel.jsx";
 export const Hero = ({ onClickVisibleFormContact }) => {
   return (
     <HeroContainer>
-      <CarouselBackground>
-        <Carousel onClickVisibleFormContact={onClickVisibleFormContact} />
-      </CarouselBackground>
+      <Carousel onClickVisibleFormContact={onClickVisibleFormContact} />
     </HeroContainer>
   );
 };
@@ -17,55 +15,9 @@ const HeroContainer = styled.section`
   width: 100%;
   height: clamp(460px, 68vh, 650px);
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  background: transparent;
+  background-color: ${({ theme }) => theme.colors.primary};
 
   @media (max-width: 1023px) {
-    height: auto;
-    min-height: unset;
-    display: block;
-  }
-`;
-
-const CarouselBackground = styled.div`
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-
-  .slick-slider,
-  .slick-list,
-  .slick-track,
-  .slick-slide,
-  .slick-slide > div {
-    height: 100% !important;
-  }
-
-  .slick-slide img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  @media (max-width: 1023px) {
-    position: relative;
-    height: auto;
-    min-height: unset;
-
-    &::after {
-      display: none;
-    }
+    height: clamp(400px, 56vh, 520px);
   }
 `;

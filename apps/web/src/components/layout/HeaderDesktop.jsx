@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
+import { rgba } from "polished";
 import { ImgLogoLavid2 } from "../../images";
 
 export const HeaderDesktop = () => {
@@ -10,96 +11,123 @@ export const HeaderDesktop = () => {
           <img src={ImgLogoLavid2} alt="La vid.life" />
         </Link>
       </div>
-      <div className="list">
+
+      <nav className="list" aria-label="Navegación principal">
         <ul>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <li>INICIO</li>
-          </Link>
-          <a
-            href="/apps/web/public#services"
-            style={{ textDecoration: "none" }}
-          >
-            <li>PRODUCTO</li>
-          </a>
-          <Link to="/partners" style={{ textDecoration: "none" }}>
-            <li className="partner-cta">PARTNERS</li>
-          </Link>
-          <a href="/apps/web/public#contact" style={{ textDecoration: "none" }}>
-            <li>CONTACTO</li>
-          </a>
+          <li>
+            <Link to="/">Inicio</Link>
+          </li>
+          <li>
+            <a href="/#services">Producto</a>
+          </li>
+          <li>
+            <a href="/#benefits">Beneficios</a>
+          </li>
+          <li>
+            <Link to="/partners" className="partner-cta">
+              Partners
+            </Link>
+          </li>
+          <li>
+            <a href="/#contact">Contacto</a>
+          </li>
         </ul>
-      </div>
+      </nav>
     </Container>
   );
 };
 
-const Container = styled.section`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-
-  .logo-img {
-    width: 35%;
-    flex-shrink: 0;
-    list-style: none;
+const Container = styled.header`
+  ${({ theme }) => css`
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
 
-    img {
-      width: 4.5rem;
-      display: block;
-    }
-  }
-
-  .list {
-    width: 65%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    ul {
-      list-style: none;
+    .logo-img {
+      flex-shrink: 0;
       display: flex;
       align-items: center;
-      gap: 1.5rem;
-      padding: 0;
-      margin: 0;
 
       a {
-        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
       }
 
-      li {
-        color: ${({ theme }) => theme.colors.quaternary};
-        font-weight: bold;
-        font-size: 1.05rem;
-        border-bottom: 2px solid transparent;
-        transition: all 0.25s ease-in-out;
-        white-space: nowrap;
-        cursor: pointer;
-      }
-
-      li:not(.partner-cta):hover {
-        color: ${({ theme }) => theme.colors.sextiary};
-        border-bottom: 2px solid ${({ theme }) => theme.colors.sextiary};
-      }
-
-      li.partner-cta {
-        color: ${({ theme }) => theme.colors.sextiary};
-        background-color: transparent;
-        border: 1.5px solid ${({ theme }) => theme.colors.sextiary};
-        padding: 0.4rem 1.15rem;
-        border-radius: ${({ theme }) => theme.border_radius.xxx_large};
-        font-size: 0.98rem;
-        letter-spacing: 0.03em;
-      }
-
-      li.partner-cta:hover {
-        background-color: ${({ theme }) => theme.colors.sextiary};
-        color: ${({ theme }) => theme.colors.secondary};
+      img {
+        width: 3.6rem;
+        height: auto;
+        display: block;
       }
     }
-  }
+
+    .list {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 0;
+        margin: 0;
+
+        li {
+          display: flex;
+          align-items: center;
+        }
+
+        a {
+          text-decoration: none;
+          color: ${theme.colors.quaternary};
+          font-weight: ${theme.font_weight.large};
+          font-size: 0.98rem;
+          padding: 0.25rem 0;
+          border-bottom: 2px solid transparent;
+          transition:
+            color 0.2s ease,
+            border-color 0.2s ease;
+          white-space: nowrap;
+          cursor: pointer;
+
+          &:not(.partner-cta):hover {
+            color: ${theme.colors.sextiary};
+            border-bottom-color: ${theme.colors.sextiary};
+          }
+
+          &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px ${rgba(theme.colors.sextiary, 0.25)};
+            border-radius: 6px;
+          }
+        }
+
+        a.partner-cta {
+          color: ${theme.colors.sextiary};
+          background-color: transparent;
+          border: 1.5px solid ${theme.colors.sextiary};
+          padding: 0.38rem 1.1rem;
+          border-radius: 10px;
+          font-size: 0.95rem;
+          letter-spacing: 0.02em;
+          transition:
+            background-color 0.2s ease,
+            color 0.2s ease,
+            transform 0.12s ease;
+
+          &:hover {
+            background-color: ${theme.colors.sextiary};
+            color: ${theme.colors.secondary};
+          }
+
+          &:active {
+            transform: scale(0.98);
+          }
+        }
+      }
+    }
+  `}
 `;

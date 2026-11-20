@@ -69,7 +69,7 @@ export const Footer = () => (
         </div>
         <div className="bottom-footer">
           <div>
-            © Copyright 2022 - La Vid / Diseñado con{" "}
+            &copy; Copyright 2026 - La Vid / Diseñado con{" "}
             <FontAwesomeIcon icon={faHeart} color="red" /> por{" "}
             {contactData.poweredBy.name}
           </div>

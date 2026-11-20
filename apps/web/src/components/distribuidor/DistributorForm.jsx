@@ -1,302 +1,382 @@
 import React, { useState } from "react";
-import { theme } from "../../styles";
+import styled, { css } from "styled-components";
+import { Col, Row } from "antd";
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { rgba } from "polished";
+import { useDevice, useFormUtils } from "../../hooks";
+import { mediaQuery } from "../../styles/constants/index.js";
+import { Button, Form, Input, notification, TextArea } from "../ui";
+
+const schema = yup.object({
+  nombre: yup.string().trim().required("El nombre es obligatorio"),
+  correo: yup
+    .string()
+    .trim()
+    .email("Ingrese un correo valido")
+    .required("El correo es obligatorio"),
+  celular: yup
+    .string()
+    .trim()
+    .matches(/^\d{9}$/, "El celular debe tener 9 digitos")
+    .required("El celular es obligatorio"),
+  dni: yup
+    .string()
+    .trim()
+    .matches(/^\d{8}$/, "El DNI debe tener 8 digitos")
+    .required("El DNI es obligatorio"),
+  ruc: yup
+    .string()
+    .trim()
+    .transform((value) => (value === "" ? undefined : value))
+    .matches(/^\d{11}$/, "El RUC debe tener 11 digitos")
+    .notRequired(),
+  direccion: yup.string().trim().required("La direccion es obligatoria"),
+  ubicacion: yup.string().trim().required("La ubicacion es obligatoria"),
+  mensaje: yup.string().trim().required("Cuentanos sobre tu proyecto"),
+});
 
 export const DistributorForm = ({ onSubmit }) => {
-  const [focusedField, setFocusedField] = useState(null);
-  const [formData, setFormData] = useState({
-    nombre: "",
-    correo: "",
-    celular: "",
-    dni: "",
-    ruc: "",
-    direccion: "",
-    ubicacion: "",
-    mensaje: "",
+  const { isMobile } = useDevice();
+  const [loading, setLoading] = useState(false);
+
+  const {
+    formState: { errors },
+    handleSubmit,
+    control,
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      nombre: "",
+      correo: "",
+      celular: "",
+      dni: "",
+      ruc: "",
+      direccion: "",
+      ubicacion: "",
+      mensaje: "",
+    },
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const { required, error } = useFormUtils({ errors, schema });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (onSubmit) onSubmit(formData);
-  };
+  const handleFormSubmit = async (formData) => {
+    try {
+      setLoading(true);
 
-  const getInputStyle = (fieldName) => ({
-    width: "100%",
-    padding: `${theme.paddings.small} ${theme.paddings.medium}`,
-    fontSize: theme.font_sizes.x_small,
-    fontWeight: theme.font_weight.small,
-    color: theme.colors.font1,
-    backgroundColor:
-      focusedField === fieldName ? theme.colors.secondary : "#FAFBFD",
-    border: `1.5px solid ${
-      focusedField === fieldName ? theme.colors.sextiary : theme.colors.white
-    }`,
-    borderRadius: theme.border_radius.small,
-    outline: "none",
-    transition: "all 0.2s ease",
-    boxSizing: "border-box",
-  });
+      if (onSubmit) {
+        await onSubmit(formData);
+      } else {
+        const [firstName, ...restName] = formData.nombre.trim().split(" ");
+        const contact = {
+          firstName,
+          lastName: restName.join(" ") || "-",
+          email: formData.correo,
+          phone: {
+            number: Number(formData.celular),
+            countryCode: "+51",
+          },
+          message: [
+            `[Solicitud Partner]`,
+            `DNI: ${formData.dni}`,
+            formData.ruc ? `RUC: ${formData.ruc}` : null,
+            `Dirección: ${formData.direccion}`,
+            `Ubicación: ${formData.ubicacion}`,
+            `Proyecto: ${formData.mensaje}`,
+          ]
+            .filter(Boolean)
+            .join(" | "),
+          hostname: "lavid.life",
+        };
 
-  const labelStyle = {
-    display: "block",
-    fontSize: theme.font_sizes.xx_small,
-    fontWeight: theme.font_weight.large,
-    color: theme.colors.primary,
-    letterSpacing: "0.04em",
-    marginBottom: theme.paddings.xx_small,
-    textTransform: "uppercase",
+        const response = await fetch(
+          "https://api-servitecsales.web.app/emails/contact",
+          {
+            method: "POST",
+            headers: {
+              "content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({ contact }),
+          }
+        );
+
+        if (!response.ok) throw new Error(response.statusText);
+      }
+
+      notification({
+        type: "success",
+        title: "Solicitud enviada exitosamente",
+      });
+      reset();
+    } catch (e) {
+      console.error("Error partner form:", e);
+      notification({ type: "error", placement: "topLeft" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div
-      style={{
-        maxWidth: "680px",
-        margin: "0 auto",
-        backgroundColor: theme.colors.secondary,
-        borderRadius: theme.border_radius.xx_large,
-        padding: `${theme.paddings.xxx_large} ${theme.paddings.xx_large}`,
-        boxShadow: "0 10px 30px rgba(15, 25, 32, 0.05)",
-        border: `1px solid ${theme.colors.white}`,
-        color: theme.colors.font1,
-      }}
-    >
-      {/* Encabezado limpio y natural */}
-      <div
-        style={{ textAlign: "center", marginBottom: theme.paddings.xx_large }}
-      >
-        <h2
-          style={{
-            fontSize: theme.font_sizes.xx_large,
-            fontWeight: theme.font_weight.large,
-            color: theme.colors.primary,
-            margin: `0 0 ${theme.paddings.small} 0`,
-          }}
-        >
-          Conviértete en Partner de La Vid
-        </h2>
-
-        <div
-          style={{
-            width: "40px",
-            height: "3px",
-            backgroundColor: theme.colors.sextiary,
-            borderRadius: theme.border_radius.xx_small,
-            margin: `0 auto ${theme.paddings.medium} auto`,
-          }}
-        />
-
-        <p
-          style={{
-            fontSize: theme.font_sizes.x_small,
-            fontWeight: theme.font_weight.small,
-            color: theme.colors.font3,
-            margin: "0 auto",
-            maxWidth: "500px",
-            lineHeight: "1.5",
-          }}
-        >
+    <CardContainer>
+      <Header>
+        <h2>Conviértete en Partner de La Vid</h2>
+        <AccentLine />
+        <p>
           Lleva nuestra selección de vinos 100% sin alcohol a tu espacio,
           restaurante o comunidad. Completa tus datos y conversemos.
         </p>
-      </div>
+      </Header>
 
-      {/* Formulario */}
-      <form onSubmit={handleSubmit}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: theme.paddings.large,
-            marginBottom: theme.paddings.large,
-          }}
-        >
-          <div>
-            <label style={labelStyle}>Nombre Completo</label>
-            <input
-              type="text"
+      <Form onSubmit={handleSubmit(handleFormSubmit)} marginTop="0">
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Controller
               name="nombre"
-              placeholder="Nombres y Apellidos"
-              value={formData.nombre}
-              onChange={handleChange}
-              onFocus={() => setFocusedField("nombre")}
-              onBlur={() => setFocusedField(null)}
-              style={getInputStyle("nombre")}
-              required
+              control={control}
+              render={({ field: { onChange, value, name } }) => (
+                <Input
+                  label="Nombre completo"
+                  name={name}
+                  value={value}
+                  onChange={onChange}
+                  error={error(name)}
+                  required={required(name)}
+                  disabled={loading}
+                  isMobile={isMobile}
+                />
+              )}
             />
-          </div>
+          </Col>
 
-          <div>
-            <label style={labelStyle}>Correo Electrónico</label>
-            <input
-              type="email"
+          <Col xs={24} md={12}>
+            <Controller
               name="correo"
-              placeholder="correo@ejemplo.com"
-              value={formData.correo}
-              onChange={handleChange}
-              onFocus={() => setFocusedField("correo")}
-              onBlur={() => setFocusedField(null)}
-              style={getInputStyle("correo")}
-              required
+              control={control}
+              render={({ field: { onChange, value, name } }) => (
+                <Input
+                  type="email"
+                  label="Correo electrónico"
+                  name={name}
+                  value={value}
+                  onChange={onChange}
+                  error={error(name)}
+                  required={required(name)}
+                  disabled={loading}
+                  isMobile={isMobile}
+                />
+              )}
             />
-          </div>
+          </Col>
 
-          <div>
-            <label style={labelStyle}>Celular</label>
-            <input
-              type="tel"
+          <Col xs={24} md={12}>
+            <Controller
               name="celular"
-              placeholder="999 999 999"
-              value={formData.celular}
-              onChange={handleChange}
-              onFocus={() => setFocusedField("celular")}
-              onBlur={() => setFocusedField(null)}
-              style={getInputStyle("celular")}
-              required
+              control={control}
+              render={({ field: { onChange, value, name } }) => (
+                <Input
+                  type="tel"
+                  inputMode="numeric"
+                  maxLength={9}
+                  label="Celular"
+                  name={name}
+                  value={value}
+                  onChange={onChange}
+                  error={error(name)}
+                  required={required(name)}
+                  disabled={loading}
+                  isMobile={isMobile}
+                />
+              )}
             />
-          </div>
+          </Col>
 
-          <div>
-            <label style={labelStyle}>DNI</label>
-            <input
-              type="text"
+          <Col xs={24} md={12}>
+            <Controller
               name="dni"
-              placeholder="Número de DNI"
-              value={formData.dni}
-              onChange={handleChange}
-              onFocus={() => setFocusedField("dni")}
-              onBlur={() => setFocusedField(null)}
-              style={getInputStyle("dni")}
-              required
+              control={control}
+              render={({ field: { onChange, value, name } }) => (
+                <Input
+                  inputMode="numeric"
+                  maxLength={8}
+                  label="DNI"
+                  name={name}
+                  value={value}
+                  onChange={onChange}
+                  error={error(name)}
+                  required={required(name)}
+                  disabled={loading}
+                  isMobile={isMobile}
+                />
+              )}
             />
-          </div>
-        </div>
+          </Col>
 
-        {/* Campo RUC ancho completo */}
-        <div style={{ marginBottom: theme.paddings.large }}>
-          <label style={labelStyle}>
-            RUC{" "}
-            <span
-              style={{
-                color: theme.colors.font3,
-                fontWeight: theme.font_weight.small,
-                textTransform: "none",
-              }}
-            >
-              (Opcional si aún no cuentas con empresa)
-            </span>
-          </label>
-          <input
-            type="text"
-            name="ruc"
-            placeholder="Número de RUC"
-            value={formData.ruc}
-            onChange={handleChange}
-            onFocus={() => setFocusedField("ruc")}
-            onBlur={() => setFocusedField(null)}
-            style={getInputStyle("ruc")}
-          />
-        </div>
+          <Col span={24}>
+            <Controller
+              name="ruc"
+              control={control}
+              render={({ field: { onChange, value, name } }) => (
+                <Input
+                  inputMode="numeric"
+                  maxLength={11}
+                  label="RUC (opcional si aún no cuentas con empresa)"
+                  name={name}
+                  value={value}
+                  onChange={onChange}
+                  error={error(name)}
+                  required={required(name)}
+                  disabled={loading}
+                  isMobile={isMobile}
+                />
+              )}
+            />
+          </Col>
 
-        {/* Dirección y Ubicación */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: theme.paddings.large,
-            marginBottom: theme.paddings.large,
-          }}
-        >
-          <div>
-            <label style={labelStyle}>Dirección</label>
-            <input
-              type="text"
+          <Col xs={24} md={12}>
+            <Controller
               name="direccion"
-              placeholder="Av/Calle/Jr..."
-              value={formData.direccion}
-              onChange={handleChange}
-              onFocus={() => setFocusedField("direccion")}
-              onBlur={() => setFocusedField(null)}
-              style={getInputStyle("direccion")}
-              required
+              control={control}
+              render={({ field: { onChange, value, name } }) => (
+                <Input
+                  label="Dirección"
+                  name={name}
+                  value={value}
+                  onChange={onChange}
+                  error={error(name)}
+                  required={required(name)}
+                  disabled={loading}
+                  isMobile={isMobile}
+                />
+              )}
             />
-          </div>
+          </Col>
 
-          <div>
-            <label style={labelStyle}>Ubicación</label>
-            <input
-              type="text"
+          <Col xs={24} md={12}>
+            <Controller
               name="ubicacion"
-              placeholder="Ciudad, Distrito"
-              value={formData.ubicacion}
-              onChange={handleChange}
-              onFocus={() => setFocusedField("ubicacion")}
-              onBlur={() => setFocusedField(null)}
-              style={getInputStyle("ubicacion")}
-              required
+              control={control}
+              render={({ field: { onChange, value, name } }) => (
+                <Input
+                  label="Ubicación (Ciudad, Distrito)"
+                  name={name}
+                  value={value}
+                  onChange={onChange}
+                  error={error(name)}
+                  required={required(name)}
+                  disabled={loading}
+                  isMobile={isMobile}
+                />
+              )}
             />
-          </div>
-        </div>
+          </Col>
 
-        {/* Mensaje */}
-        <div style={{ marginBottom: theme.paddings.small }}>
-          <label style={labelStyle}>Cuéntanos sobre tu proyecto</label>
-          <textarea
-            name="mensaje"
-            rows="3"
-            placeholder="Ej: Hola, quisiera hacer un pedido inicial de 2 cajas para ofrecer los vinos 100% sin alcohol de La Vid en mi local..."
-            value={formData.mensaje}
-            onChange={handleChange}
-            onFocus={() => setFocusedField("mensaje")}
-            onBlur={() => setFocusedField(null)}
-            style={{
-              ...getInputStyle("mensaje"),
-              resize: "vertical",
-              fontFamily: "inherit",
-            }}
-            required
-          />
-        </div>
+          <Col span={24}>
+            <Controller
+              name="mensaje"
+              control={control}
+              render={({ field: { onChange, value, name } }) => (
+                <TextArea
+                  rows={3}
+                  label="Cuéntanos sobre tu proyecto"
+                  name={name}
+                  value={value}
+                  onChange={onChange}
+                  error={error(name)}
+                  required={required(name)}
+                  disabled={loading}
+                  isMobile={isMobile}
+                />
+              )}
+            />
+          </Col>
 
-        <p
-          style={{
-            fontSize: theme.font_sizes.xx_small,
-            color: theme.colors.font3,
-            margin: `0 0 ${theme.paddings.x_large} 0`,
-          }}
-        >
-          * Los pedidos para partners aplican a partir de 2 cajas en adelante.
-        </p>
+          <Col span={24}>
+            <HelperNote>
+              * Los pedidos para partners aplican a partir de 2 cajas en
+              adelante.
+            </HelperNote>
+          </Col>
 
-        {/* Botón principal */}
-        <button
-          type="submit"
-          style={{
-            width: "100%",
-            padding: theme.paddings.medium,
-            backgroundColor: theme.colors.primary,
-            color: theme.colors.secondary,
-            fontSize: theme.font_sizes.x_small,
-            fontWeight: theme.font_weight.large,
-            letterSpacing: "0.06em",
-            border: "none",
-            borderRadius: theme.border_radius.small,
-            cursor: "pointer",
-            transition: "background-color 0.2s ease, transform 0.1s ease",
-          }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.backgroundColor = theme.colors.sextiary)
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.backgroundColor = theme.colors.primary)
-          }
-        >
-          QUIERO SER PARTNER
-        </button>
-      </form>
-    </div>
+          <Col span={24}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              width="100%"
+              loading={loading}
+              disabled={loading}
+              text="Quiero ser partner"
+            />
+          </Col>
+        </Row>
+      </Form>
+    </CardContainer>
   );
 };
+
+const CardContainer = styled.div`
+  ${({ theme }) => css`
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    background-color: ${theme.colors.secondary};
+    border-radius: 14px;
+    padding: 2rem 1.25rem;
+    border: 1px solid ${theme.colors.light};
+    box-shadow: 0 10px 30px ${rgba(theme.colors.primary, 0.06)};
+    box-sizing: border-box;
+
+    ${mediaQuery.minTablet} {
+      padding: 2.75rem 2.5rem;
+    }
+  `}
+`;
+
+const Header = styled.div`
+  ${({ theme }) => css`
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.65rem;
+      font-weight: ${theme.font_weight.large};
+      color: ${theme.colors.primary};
+      line-height: 1.25;
+
+      ${mediaQuery.minTablet} {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      margin: 0 auto;
+      max-width: 520px;
+      font-size: 0.96rem;
+      font-weight: ${theme.font_weight.small};
+      color: ${theme.colors.quaternary};
+      line-height: 1.55;
+    }
+  `}
+`;
+
+const AccentLine = styled.div`
+  ${({ theme }) => css`
+    width: 44px;
+    height: 3px;
+    background-color: ${theme.colors.sextiary};
+    border-radius: 3px;
+    margin: 0 auto 1rem;
+  `}
+`;
+
+const HelperNote = styled.p`
+  ${({ theme }) => css`
+    margin: -0.25rem 0 0.5rem;
+    font-size: 0.82rem;
+    font-weight: ${theme.font_weight.small};
+    color: ${theme.colors.font3};
+  `}
+`;

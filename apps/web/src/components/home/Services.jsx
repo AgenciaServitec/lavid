@@ -124,8 +124,9 @@ const Container = styled.div`
     .title {
       color: #bf1f6a;
       font-weight: 700;
-      margin: 0 0 2.5rem 0;
-      font-size: 2.2rem;
+      margin: 0 0 clamp(1.75rem, 3vw, 2.5rem) 0;
+      font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+      line-height: 1.25;
       text-align: center;
       text-decoration: underline;
     }
@@ -133,7 +134,7 @@ const Container = styled.div`
     .content-img {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 2rem;
+      gap: clamp(1.25rem, 2.5vw, 2rem);
       align-items: stretch;
 
       .item-img {
@@ -141,11 +142,13 @@ const Container = styled.div`
         background: #fff;
         border: 1px solid #e5e7eb;
         border-radius: 16px;
-        padding: 2.25rem 1.5rem 2rem;
+        padding: clamp(1.75rem, 3vw, 2.25rem) clamp(1.15rem, 2vw, 1.5rem)
+          clamp(1.5rem, 2.5vw, 2rem);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        text-align: center;
         transition:
           border-color 0.25s ease,
           transform 0.25s ease;
@@ -161,16 +164,17 @@ const Container = styled.div`
           right: 1rem;
           background-color: rgba(191, 31, 106, 0.08);
           color: #bf1f6a;
-          font-size: 0.75rem;
+          font-size: clamp(0.72rem, 1vw, 0.78rem);
           font-weight: 600;
           letter-spacing: 0.02em;
+          line-height: 1.2;
           padding: 0.25rem 0.75rem;
           border-radius: 999px;
         }
 
         .image-wrapper {
           width: 100%;
-          height: 230px;
+          height: clamp(190px, 24vw, 230px);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -186,15 +190,17 @@ const Container = styled.div`
         }
 
         h2 {
-          margin: 0.4rem 0 0.2rem;
-          font-size: 1.35rem;
+          margin: 0.4rem 0 0.25rem;
+          font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+          line-height: 1.25;
           font-weight: 700;
           color: #000;
         }
 
         .subtitle-tag {
           margin: 0 0 0.85rem;
-          font-size: 0.82rem;
+          font-size: clamp(0.8rem, 1.1vw, 0.88rem);
+          line-height: 1.4;
           color: #79838c;
           font-weight: 400;
         }
@@ -207,7 +213,8 @@ const Container = styled.div`
           border: 1px solid #d7d8d9;
           border-radius: 999px;
           text-align: center;
-          font-size: 0.82rem;
+          font-size: clamp(0.78rem, 1.05vw, 0.86rem);
+          line-height: 1.3;
           font-weight: 600;
           letter-spacing: 0.02em;
           color: #000;
@@ -217,16 +224,19 @@ const Container = styled.div`
           padding: 1rem 0 1.25rem;
           display: flex;
           align-items: baseline;
+          justify-content: center;
           gap: 0.75rem;
 
           span {
             text-decoration: line-through;
             color: #79838c;
-            font-size: 1rem;
+            font-size: clamp(0.92rem, 1.3vw, 1.05rem);
+            line-height: 1.2;
           }
 
           strong {
-            font-size: 1.4rem;
+            font-size: clamp(1.3rem, 2vw, 1.5rem);
+            line-height: 1.2;
             font-weight: 700;
             color: #000;
           }

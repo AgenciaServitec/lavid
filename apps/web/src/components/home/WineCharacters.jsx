@@ -6,6 +6,14 @@ export const WineCharacters = () => {
   return (
     <Container>
       <div className="content-top">
+        <div className="section-header">
+          <h2 className="section-title">Hecho para brindar juntos</h2>
+          <p className="section-subtitle">
+            El sabor del vino natural sin alcohol para acompañar cada momento
+            especial en familia.
+          </p>
+        </div>
+
         <div className="list-characters">
           <ItemCharacter
             component={<SvgSun />}
@@ -32,7 +40,7 @@ const ItemCharacter = ({ component, title, subTitle }) => {
   return (
     <div className="item-character">
       <div className="item-icon">{component}</div>
-      <h2>{title}</h2>
+      <h3>{title}</h3>
       <p>{subTitle}</p>
     </div>
   );
@@ -47,12 +55,26 @@ const Container = styled.section`
       max-width: 1120px;
       margin: 0 auto;
 
-      .line-horizontal {
-        margin: 1.5rem auto 3rem;
-        width: 100%;
-        max-width: 42rem;
-        height: 2px;
-        background-color: ${theme.colors.primary};
+      .section-header {
+        text-align: center;
+        margin: 0 auto clamp(2rem, 3.5vw, 3rem);
+        max-width: 620px;
+
+        .section-title {
+          margin: 0 0 0.65rem;
+          color: ${theme.colors.sextiary};
+          font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+          font-weight: ${theme.font_weight.large};
+          line-height: 1.25;
+        }
+
+        .section-subtitle {
+          margin: 0;
+          color: ${theme.colors.quaternary};
+          font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+          font-weight: ${theme.font_weight.small};
+          line-height: 1.55;
+        }
       }
 
       .list-characters {
@@ -90,10 +112,10 @@ const Container = styled.section`
             }
           }
 
-          h2 {
+          h3 {
             margin: 0 0 0.65rem;
             color: ${theme.colors.primary};
-            font-size: 1.25rem;
+            font-size: clamp(1.1rem, 1.6vw, 1.25rem);
             font-weight: ${theme.font_weight.large};
             line-height: 1.3;
           }
@@ -101,7 +123,7 @@ const Container = styled.section`
           p {
             margin: 0;
             color: ${theme.colors.quaternary};
-            font-size: 0.98rem;
+            font-size: clamp(0.9rem, 1.2vw, 0.98rem);
             font-weight: ${theme.font_weight.small};
             line-height: 1.55;
             max-width: 28ch;

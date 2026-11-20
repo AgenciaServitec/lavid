@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { ImgLogoLavid2 } from "../../images";
-import { useDevice } from "../../hooks";
+import styled, { css } from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { rgba } from "polished";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { ImgLogoLavid2 } from "../../images";
+import { useDevice } from "../../hooks";
 import { Drawer } from "./Drawer.jsx";
 import { Footer } from "./Footer.jsx";
 import { ButtonsFloating, WrapperComponent } from "../ui";
-import { useNavigate } from "react-router";
 import { HeaderDesktop } from "./HeaderDesktop.jsx";
 
 export const BaseLayout = ({ children, onClickVisibleFormContact }) => {
   const { isMobile } = useDevice();
   const navigate = useNavigate();
-
   const [visibleDrawer, setVisibleDrawer] = useState(false);
 
   return (
@@ -23,34 +23,35 @@ export const BaseLayout = ({ children, onClickVisibleFormContact }) => {
         onSetVisibleDrawer={setVisibleDrawer}
         onClickVisibleFormContact={onClickVisibleFormContact}
       />
-      <div className="header">
+
+      <header className="header">
         <WrapperComponent>
-          <>
-            {isMobile ? (
-              <div className="menu-mobile">
-                <div className="item-logo">
-                  <img
-                    src={ImgLogoLavid2}
-                    alt="La vid.life"
-                    onClick={() => {
-                      navigate("/");
-                    }}
-                  />
-                </div>
-                <div
-                  className="icon-bar"
-                  onClick={() => setVisibleDrawer(true)}
-                >
-                  <FontAwesomeIcon icon={faBars} size="2x" />
-                </div>
+          {isMobile ? (
+            <div className="menu-mobile">
+              <div className="item-logo">
+                <img
+                  src={ImgLogoLavid2}
+                  alt="La vid.life"
+                  onClick={() => navigate("/")}
+                />
               </div>
-            ) : (
-              <HeaderDesktop />
-            )}
-          </>
+
+              <button
+                type="button"
+                className="icon-bar"
+                onClick={() => setVisibleDrawer(true)}
+                aria-label="Abrir menú de navegación"
+              >
+                <FontAwesomeIcon icon={faBars} />
+              </button>
+            </div>
+          ) : (
+            <HeaderDesktop />
+          )}
         </WrapperComponent>
-      </div>
-      <div className="body">{children}</div>
+      </header>
+
+      <main className="body">{children}</main>
       <Footer />
       <ButtonsFloating />
     </Container>
@@ -58,53 +59,68 @@ export const BaseLayout = ({ children, onClickVisibleFormContact }) => {
 };
 
 const Container = styled.div`
-  width: 100%;
-  max-width: 1536px;
-  margin: auto;
-  height: auto;
-  position: relative;
-
-  .header {
-    position: relative;
+  ${({ theme }) => css`
     width: 100%;
     max-width: 1536px;
-    height: auto;
-    background: #fff;
-    margin: auto;
-    padding: 1rem;
-    display: grid;
-    grid-area: auto;
+    margin: 0 auto;
+    position: relative;
 
-    .menu-mobile {
+    .header {
+      position: relative;
       width: 100%;
-      color: #000;
-      display: grid;
-      grid-template-columns: 85% 1fr;
+      max-width: 1536px;
+      background-color: ${theme.colors.secondary};
+      margin: 0 auto;
+      padding: 0.45rem 1rem;
+      box-sizing: border-box;
 
-      .item-logo {
+      .menu-mobile {
+        width: 100%;
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: space-between;
 
-        img {
-          width: 65%;
-          max-width: 85px;
+        .item-logo {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 3.3rem;
+            height: auto;
+            display: block;
+            cursor: pointer;
+          }
+        }
+
+        .icon-bar {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 2.5rem;
+          height: 2.5rem;
+          padding: 0;
+          border: none;
+          border-radius: 10px;
+          background: transparent;
+          color: ${theme.colors.primary};
+          font-size: 1.45rem;
+          cursor: pointer;
+          transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+
+          &:hover,
+          &:active {
+            background-color: ${rgba(theme.colors.sextiary, 0.08)};
+            color: ${theme.colors.sextiary};
+          }
+
+          &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px ${rgba(theme.colors.sextiary, 0.25)};
+          }
         }
       }
-
-      .icon-bar {
-        width: auto;
-        height: 100%;
-        padding: 0.7rem 0.1rem 0.7rem 1.5rem;
-      }
     }
-  }
-
-  .footer {
-    width: 100%;
-    height: auto;
-    padding: 1rem;
-    background: black;
-    color: #fff;
-  }
+  `}
 `;
