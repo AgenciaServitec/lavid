@@ -13,8 +13,8 @@
     "format": "prettier --write \"apps/**/*.{js,jsx,ts,tsx,json,css}\"",
     "format:check": "prettier --check \"apps/**/*.{js,jsx,ts,tsx,json,css}\"",
     "deploy": "yarn build && firebase deploy --only hosting",
-    "deploy:web": "yarn turbo run build --filter=@web/lavid-life && firebase deploy --only hosting:web-site",
-    "deploy:admin": "yarn turbo run build --filter=admin && firebase deploy --only hosting:admin-site",
+    "deploy:web": "turbo run build --filter=@web/lavid-life && firebase deploy --only hosting:web-site",
+    "deploy:admin": "turbo run build --filter=@admin/lavid-life && firebase deploy --only hosting:admin-site",
     "deploy:indexes": "firebase deploy --only firestore:indexes",
     "firebase:emulators": "firebase emulators:start"
   },

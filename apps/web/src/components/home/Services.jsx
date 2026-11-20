@@ -3,11 +3,9 @@ import styled from "styled-components";
 import { ImgUnidad1, ImgUnidad3, ImgUnidad6 } from "../../images";
 import { Button } from "../ui";
 
-export const Services = ({
-  onClickVisibleFormContact,
-  onEventGaClickButton,
-  oneChangeMessageCustom,
-}) => {
+const WHATSAPP_PHONE = "51932508739";
+
+export const Services = ({ onEventGaClickButton }) => {
   const arraysWine = [
     {
       title: "1 Unidad",
@@ -53,9 +51,7 @@ export const Services = ({
               img={array.img}
               oldPrice={array.oldPrice}
               newPrice={array.newPrice}
-              onClickVisibleFormContact={onClickVisibleFormContact}
               onEventGaClickButton={onEventGaClickButton}
-              oneChangeMessageCustom={oneChangeMessageCustom}
             />
           ))}
         </div>
@@ -72,11 +68,21 @@ const ItemService = ({
   offerText,
   oldPrice,
   newPrice,
-  onClickVisibleFormContact,
   onEventGaClickButton,
-  oneChangeMessageCustom,
 }) => {
-  const message = `Necesito esta cantidad ${title}`;
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(
+    `Hola, estoy interesado en su vino sin alcohol. Quisiera pedir: ${title} (S/.${newPrice})`
+  )}`;
+
+  const handleContactClick = () => {
+    if (onEventGaClickButton) {
+      onEventGaClickButton(
+        "click-boton-empezar-ahora",
+        `Click boton contactar - ${title}`
+      );
+    }
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <div className="item-img">
@@ -98,18 +104,7 @@ const ItemService = ({
         <strong>S/.{newPrice}</strong>
       </div>
 
-      <Button
-        text="Contactar"
-        type="tertiary"
-        onClick={() => {
-          onClickVisibleFormContact(true);
-          onEventGaClickButton(
-            "click-boton-empezar-ahora",
-            "Click boton empezar ahora"
-          );
-          oneChangeMessageCustom(message);
-        }}
-      />
+      <Button text="Contactar" type="tertiary" onClick={handleContactClick} />
     </div>
   );
 };
