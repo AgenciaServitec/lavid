@@ -8,6 +8,10 @@ export const ItemCarousel = ({
   alt = "Vino sin alcohol La Vid",
   title = "Bebe con alegre corazón",
   subtitle = "0% de alcohol",
+  textButton = "",
+  hrefButton = "",
+  textButtonSecondary = "",
+  hrefButtonSecondary = "",
   isFirst = false,
 }) => (
   <Container>
@@ -24,11 +28,43 @@ export const ItemCarousel = ({
         <div className="txt-items">
           <h1>{title}</h1>
           <h2>{subtitle}</h2>
+          <ContainerButton>
+            {textButton && (
+              <ButtonLink href={hrefButton}>{textButton}</ButtonLink>
+            )}
+            {textButtonSecondary && (
+              <ButtonLinkSecondary href={hrefButtonSecondary}>
+                {textButtonSecondary}
+              </ButtonLinkSecondary>
+            )}
+          </ContainerButton>
         </div>
       </div>
     </OverlayContent>
   </Container>
 );
+
+const ContainerButton = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const ButtonLink = styled.a`
+  background: #ef3af3;
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+`;
+
+const ButtonLinkSecondary = styled.a`
+  background: transparent;
+  border: 2px solid white;
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+`;
 
 const Container = styled.div`
   position: relative;
@@ -80,6 +116,7 @@ const OverlayContent = styled.div`
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      gap: 0.625rem;
 
       h1 {
         max-width: 580px;
