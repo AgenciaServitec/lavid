@@ -2,30 +2,38 @@ import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styled, { css } from "styled-components";
 import { rgba } from "polished";
-import { ImgCarousel } from "../../images";
 import { ItemCarousel } from "./ItemCarousel.jsx";
+import { ImgCarousel, ImgCarousel2, ImgCarousel3 } from "../../images";
 
 const HERO_SLIDES = [
   {
     id: 1,
     image: ImgCarousel,
     alt: "Vino sin alcohol La Vid",
-    title: "Bebe con alegre corazón",
+    title: "BEBE CON ALEGRIA CORAZÓ",
     subtitle: "0% de alcohol",
+    textButton: "Ver Producto",
+    hrefButton: "/#services",
+    textButtonSecondary: "Beneficios",
+    hrefButtonSecondary: "/#benefits",
   },
   {
     id: 2,
-    image: ImgCarousel,
+    image: ImgCarousel2,
     alt: "Celebraciones en familia con La Vid",
-    title: "Bebe con alegre corazón",
+    title: "COMPARTE GRANDES MOMENTOS",
     subtitle: "0% de alcohol",
+    textButton: "Ser Partners",
+    hrefButton: "/partners",
   },
   {
     id: 3,
-    image: ImgCarousel,
+    image: ImgCarousel3,
     alt: "Zumo de uva natural La Vid",
-    title: "Bebe con alegre corazón",
+    title: "LA MAGIA DE COMPARTIR",
     subtitle: "0% de alcohol",
+    textButton: "Ver Contacto",
+    hrefButton: "/#contact",
   },
 ];
 
@@ -90,6 +98,10 @@ export const Carousel = ({ onClickVisibleFormContact }) => {
                 alt={slide.alt}
                 title={slide.title}
                 subtitle={slide.subtitle}
+                textButton={slide.textButton}
+                hrefButton={slide.hrefButton}
+                textButtonSecondary={slide.textButtonSecondary}
+                hrefButtonSecondary={slide.hrefButtonSecondary}
                 isFirst={index === 0}
                 onClickVisibleFormContact={onClickVisibleFormContact}
               />
